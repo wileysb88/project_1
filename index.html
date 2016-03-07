@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
+
     <link rel="stylesheet" href="style/style.css" media="screen" title="no title" charset="utf-8">
     <title>SO YOU THINK YOU CAN STYLE?</title>
   </head>
-  <body> 
+  <body>
 
   </body>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js">
@@ -14,4 +15,85 @@
   <script type="text/javascript" src="scripts/app.js">
 
   </script>
+
+    <title>Shopping Cart</title>
+  </head>
+  <script type="text/javascript">
+  var itemsToBeReviewed = [];
+  var itemsToBeReviewedLocation = [];
+  function reportInvalidItem(product, location){
+    //sendMail('boss', 'boss@newco.nu', product);
+    itemsToBeReviewed.push(product);
+    itemsToBeReviewedLocation.push(location);
+  };
+
+  var prices = [
+    3.14,
+    69.99,
+    "meow"
+  ];
+
+  var totalPrice = 0;
+
+  var products = [
+    "Apple Pie",
+    "Auto Cat Feeder",
+    78.89
+  ];
+
+  console.log('Shooping Cart App');
+  console.log('-----------------');
+  console.log('We have found the following items in your cart:');
+  console.log(prices);
+  console.log(products);
+  console.log('-----------------');
+
+  // one method...isArray
+  // console.log(Array.isArray(prices));
+
+  //loop through all the things
+  prices.forEach(function(item){
+
+    if (typeof item == 'number'){
+      totalPrice = totalPrice + item;
+    }else {
+      //throw new Error("Whoops, someone entered NaN");
+      // console.log(item);
+      // console.log('has bad datazzzz');
+      reportInvalidItem(item, prices.indexOf(item));
+
+    }
+    // console.log(item);
+  });
+  console.log('-----------------');
+  console.log('Your total price is:')
+  console.log('-----------------');
+
+  console.log('$' + totalPrice);
+
+  console.log('-----------------');
+  console.log('We have found invalide items in your cart.');
+  console.log('They have been removed and your total does not reflect their price.');
+  console.log('-----------------');
+
+  console.log(itemsToBeReviewed);
+  console.log(itemsToBeReviewedLocation);
+
+
+  console.log('-----------------');
+  console.log('Thanks for using Phamazon! :)');
+  console.log('-----------------');
+  </script>
+  <body>
+    My first shopping cart experience.
+    <section>
+      <article>
+        <h3>My article title</h3>
+        <p>
+          Lorem ipsum my code is here.
+        </p>
+      </article>
+    </section>
+  </body>
+
 </html>
