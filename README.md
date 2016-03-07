@@ -1,30 +1,19 @@
-# Welcome to wileysb88.github.io!
-### *the place a Giant saves his codes!* :+1:
-___
+**SO YOU THINK YOU CAN STYLE?**
+![MAIN HEADER IMAGE](https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSLAyW8mO5m8_W4DUptl0wz0m7Kni5V0c0MveDAUOh6uvdLH3VqJA)
+
+*******************************************************
+
+**Purpose:** Pick the most fashionable outfits for your clients from a collection of outfits! The better the outfit, the higher the score! Do you have what it takes?
+
+**Instructions:** Clients will come in and describes an event for which they need an outfit - it’s YOUR job to pick from a list of 12 items (3 tops, 3 bottoms, 3 accessories). Pair the best top, bottom and accessory together and see what the client thinks! Where will you stand after styling 10 clients? Will you end up looking SO last season or finish being a true fashionista? Try your luck with SO YOU THINK YOU CAN STYLE!
 
 
-This is my first WDI GitHub repository and we are about to get **JAZZY**! Since you can only see my codes, I wanted to share a bit about myself!
+*******************************************************
 
+**Technologies Used:**
 
-___
-### ABOUT ME
+**Approach Taken:**
 
-![alt text](https://scontent-yyz1-1.xx.fbcdn.net/hphotos-xpt1/t31.0-8/12186845_10205236929619919_257161476522888975_o.jpg)
+**Installation Instructions**
 
-I am 6'9 which means I have a hard time buying shoes. It's my birthday on Tuesday though so [here are some ideas](http://www.oddball.com/search?stored_query=y&keyword=&width=&x=15&category_direct=0&size=16&y=10&color=&products_per_page=12&offset=0&products_per_page=10000) if you want to get me a present!
-___
-```
-function clapYourHands(){
-  var you = happy;
-  If (you === happy){
-    return ':clap::clap::clap:';
-  }else{
-    return "sorry bout it"
-  }
-};
-```
-____
-- [x] Win at life
-- [x] Eat a whole box of Reese's Peanut Butter Puffs
-- [x] Eat three blocks of cheese in one evening
-- [ ] Complete WDI
+**Unsolved Problems**
