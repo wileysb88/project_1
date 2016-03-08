@@ -1,13 +1,25 @@
 body{
   width: 1140px;
+  margin: auto;
+
+}
+
+header{
+  margin: 20px 0px;
+  text-align: center;
 }
 img{
   border-radius: 10%;
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;s
 }
 button{
   border-radius: 10%;
   padding: 5px;
-  margin: 5px;
+  margin: 15px;
+}
+
+#playingField{
+  margin: auto;
+  text-align: center;
 }

@@ -102,7 +102,7 @@ var clients = [
 //------GLOBAL VARIABLES--------
 var currentScore = 0;
 var clickCount = 0;
-
+var round = 0;
 
 //----------FOR LOOP TO LOOP THROUGH ARRAY-------------------------------
 //
@@ -126,36 +126,293 @@ var clickCount = 0;
 //  alert('THIS CLIENTS GREAT!')
 //
 // };
+//-------------BEGINNING SCREEN--------------------------------
+//
+// $('header').append('<h1>SO YOU THINK YOU CAN STYLE?</h1>')
+// $('#playingField').append('<button type="button" class="start">START STYLING</button>')
+// $('#playingField').on('click', 'button', function(e){
+//   $('header').detach();
+//   $('.start').detach();
+// });
+//
 
-$('header').append(client[1]).story);
-for (var x = 0; x<clients[1].tops.length; x++){
-    $('.tops').append("<button type='button' class='"+thisClient.tops[x].rank+"'><img src='"+thisClient.tops[x].img+"'></button>")
-  };
-for (var y = 0; y<clients[1].bottoms.length; y++){
-    $('.bottoms').append("<button type='button' class='"+thisClient.bottoms[y].rank+"'><img src='"+thisClient.bottoms[y].img+"'></button>")
-  };
-for (var z = 0; z<clients[1].accessories.length; z++){
-    $('.accessories').append("<button type='button' class='"+thisClient.accessories[z].rank+"'><img src='"+thisClient.accessories[z].img+"'></button>")
-  };
+// ------------ROUND ONE--------------------------------
+
+    var setNewRound = function(){
+          $('header').append(clients[round].story);
+          for (var x = 0; x<clients[round].tops.length; x++){
+              $('.tops').append("<button type='button' class='" + clients[round].tops[x].rank + "'><img src='" + clients[round].tops[x].img + "'></button>")
+            };
+          for (var y = 0; y<clients[round].bottoms.length; y++){
+              $('.bottoms').append("<button type='button' class='" + clients[round].bottoms[y].rank + "'><img src='" + clients[round].bottoms[y].img + "'></button>")
+            };
+          for (var z = 0; z<clients[round].accessories.length; z++){
+              $('.accessories').append("<button type='button' class='" + clients[round].accessories[z].rank + "'><img src='"+clients[round].accessories[z].img + "'></button>")
+            };
+      };
+
+    setNewRound();
+
+    $('.tops').on('click', 'button', function(e){
+      e.preventDefault();
+      currentScore += +$(this).prop('class');
+      alert(currentScore);
+      clickCount++;
+      if(round >= clients.length){
+        $('header').empty();
+        $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
+      }else if(clickCount % 3 === 0){
+        $('header').empty();
+        $('.tops').empty();
+        $('.bottoms').empty();
+        $('.accessories').empty();
+        round++;
+        setNewRound();
+      };
+
+    });
+
+    $('.bottoms').on('click', 'button', function(e){
+      e.preventDefault();
+      currentScore += +$(this).prop('class');
+      alert(currentScore);
+      clickCount++;
+      if(round >= clients.length){
+        $('header').empty();
+        $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
+      }else if(clickCount % 3 === 0){
+        $('header').empty();
+        $('.tops').empty();
+        $('.bottoms').empty();
+        $('.accessories').empty();
+        round++;
+        setNewRound();
+      }
+    });
+
+    $('.accessories').on('click', 'button', function(e){
+      e.preventDefault();
+      currentScore += +$(this).prop('class');
+      alert(currentScore);
+      clickCount++;
+      if(round >= clients.length){
+        $('header').empty();
+        $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
+      }else if(clickCount % 3 === 0){
+        $('header').empty();
+        $('.tops').empty();
+        $('.bottoms').empty();
+        $('.accessories').empty();
+        round++;
+        setNewRound();
+      }
+    });
 
 
-$('.tops').on('click', 'button', function(e){
-  e.preventDefault();
-  currentScore += +$(this).prop('class');
-  alert(currentScore);
-  clickCount++;
-});
-
-$('.bottoms').on('click', 'button', function(e){
-  e.preventDefault();
-  currentScore += +$(this).prop('class');
-  alert(currentScore);
-  clickCount++;
-});
-
-$('.accessories').on('click', 'button', function(e){
-  e.preventDefault();
-  currentScore += +$(this).prop('class');
-  alert(currentScore);
-  clickCount++;
-});
+// // ------------ROUND TWO--------------------------------
+// $('header').append(clients[1].story);
+// for (var x = 0; x<clients[1].tops.length; x++){
+//     $('.tops').append("<button type='button' class='"+clients[1].tops[x].rank+"'><img src='"+clients[1].tops[x].img+"'></button>")
+//   };
+// for (var y = 0; y<clients[1].bottoms.length; y++){
+//     $('.bottoms').append("<button type='button' class='"+clients[1].bottoms[y].rank+"'><img src='"+clients[1].bottoms[y].img+"'></button>")
+//   };
+// for (var z = 0; z<clients[1].accessories.length; z++){
+//     $('.accessories').append("<button type='button' class='"+clients[1].accessories[z].rank+"'><img src='"+clients[1].accessories[z].img+"'></button>")
+//   };
+//
+//
+// $('.tops').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// $('.bottoms').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// $('.accessories').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// // ------------ROUND THREE--------------------------------
+// $('header').append(clients[2].story);
+// for (var x = 0; x<clients[2].tops.length; x++){
+//     $('.tops').append("<button type='button' class='"+clients[2].tops[x].rank+"'><img src='"+clients[0].tops[x].img+"'></button>")
+//   };
+// for (var y = 0; y<clients[2].bottoms.length; y++){
+//     $('.bottoms').append("<button type='button' class='"+clients[2].bottoms[y].rank+"'><img src='"+clients[0].bottoms[y].img+"'></button>")
+//   };
+// for (var z = 0; z<clients[2].accessories.length; z++){
+//     $('.accessories').append("<button type='button' class='"+clients[2].accessories[z].rank+"'><img src='"+clients[0].accessories[z].img+"'></button>")
+//   };
+//
+//
+// $('.tops').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// $('.bottoms').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// $('.accessories').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// // ------------ROUND FOUR--------------------------------
+// $('header').append(clients[3].story);
+// for (var x = 0; x<clients[3].tops.length; x++){
+//     $('.tops').append("<button type='button' class='"+clients[3].tops[x].rank+"'><img src='"+clients[0].tops[x].img+"'></button>")
+//   };
+// for (var y = 0; y<clients[3].bottoms.length; y++){
+//     $('.bottoms').append("<button type='button' class='"+clients[3].bottoms[y].rank+"'><img src='"+clients[0].bottoms[y].img+"'></button>")
+//   };
+// for (var z = 0; z<clients[3].accessories.length; z++){
+//     $('.accessories').append("<button type='button' class='"+clients[3].accessories[z].rank+"'><img src='"+clients[0].accessories[z].img+"'></button>")
+//   };
+//
+//
+// $('.tops').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// $('.bottoms').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// $('.accessories').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// // ------------ROUND FIVE--------------------------------
+// $('header').append(clients[4].story);
+// for (var x = 0; x<clients[4].tops.length; x++){
+//     $('.tops').append("<button type='button' class='"+clients[4].tops[x].rank+"'><img src='"+clients[4].tops[x].img+"'></button>")
+//   };
+// for (var y = 0; y<clients[4].bottoms.length; y++){
+//     $('.bottoms').append("<button type='button' class='"+clients[4].bottoms[y].rank+"'><img src='"+clients[4].bottoms[y].img+"'></button>")
+//   };
+// for (var z = 0; z<clients[4].accessories.length; z++){
+//     $('.accessories').append("<button type='button' class='"+clients[4].accessories[z].rank+"'><img src='"+clients[4].accessories[z].img+"'></button>")
+//   };
+//
+//
+// $('.tops').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// $('.bottoms').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
+//
+// $('.accessories').on('click', 'button', function(e){
+//   e.preventDefault();
+//   currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+//   if(clickCount === 3){
+//     $('header').detach();
+//     $('.tops').detach();
+//     $('.bottoms').detach();
+//     $('.accessories').detach();
+//   }
+// });
