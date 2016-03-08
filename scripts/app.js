@@ -96,19 +96,66 @@ var clients = [
   }
 ]
 
+// ---------------------------START THE CODE----------------------------
 
+
+//------GLOBAL VARIABLES--------
 var currentScore = 0;
-for (var i = 0; i<clients.length; i++){
-  $('header').append(clients[i].story);
-  var thisClient = clients[i];
-  for (var x = 0; x<clients[i].tops.length; x++){
-  $('.tops').append("<button type='button' class='"+thisClient.tops[x].rank+"'><img src='"+thisClient.tops[x].img+"'></button>")
+var clickCount = 0;
+
+
+//----------FOR LOOP TO LOOP THROUGH ARRAY-------------------------------
+//
+// for (var i = 0; i<clients.length; i++){
+//   $('header').append(clients[i].story);
+//   var thisClient = clients[i];
+//   for (var x = 0; x<clients[i].tops.length; x++){
+//     $('.tops').append("<button type='button' class='"+thisClient.tops[x].rank+"'><img src='"+thisClient.tops[x].img+"'></button>")
+//   };
+//   for (var y = 0; y<clients[i].bottoms.length; y++){
+//     $('.bottoms').append("<button type='button' class='"+thisClient.bottoms[y].rank+"'><img src='"+thisClient.bottoms[y].img+"'></button>")
+//   };
+//   for (var z = 0; z<clients[i].accessories.length; z++){
+//     $('.accessories').append("<button type='button' class='"+thisClient.accessories[z].rank+"'><img src='"+thisClient.accessories[z].img+"'></button>")
+//   };
+//
+//
+// --TO CHECK TO CONFIRM EACH INDIVIDUAL LOOP WORKS------------
+//
+//
+//  alert('THIS CLIENTS GREAT!')
+//
+// };
+
+$('header').append(client[1]).story);
+for (var x = 0; x<clients[1].tops.length; x++){
+    $('.tops').append("<button type='button' class='"+thisClient.tops[x].rank+"'><img src='"+thisClient.tops[x].img+"'></button>")
   };
-  for (var y = 0; y<clients[i].bottoms.length; y++){
-  $('.bottoms').append("<button type='button' class='"+thisClient.bottoms[y].rank+"'><img src='"+thisClient.bottoms[y].img+"'></button>")
+for (var y = 0; y<clients[1].bottoms.length; y++){
+    $('.bottoms').append("<button type='button' class='"+thisClient.bottoms[y].rank+"'><img src='"+thisClient.bottoms[y].img+"'></button>")
   };
-  for (var z = 0; z<clients[i].accessories.length; z++){
-  $('.accessories').append("<button type='button' class='"+thisClient.accessories[z].rank+"'><img src='"+thisClient.accessories[z].img+"'></button>")
+for (var z = 0; z<clients[1].accessories.length; z++){
+    $('.accessories').append("<button type='button' class='"+thisClient.accessories[z].rank+"'><img src='"+thisClient.accessories[z].img+"'></button>")
   };
-  alert('THIS CLIENTS GREAT!')
-};
+
+
+$('.tops').on('click', 'button', function(e){
+  e.preventDefault();
+  currentScore += +$(this).prop('class');
+  alert(currentScore);
+  clickCount++;
+});
+
+$('.bottoms').on('click', 'button', function(e){
+  e.preventDefault();
+  currentScore += +$(this).prop('class');
+  alert(currentScore);
+  clickCount++;
+});
+
+$('.accessories').on('click', 'button', function(e){
+  e.preventDefault();
+  currentScore += +$(this).prop('class');
+  alert(currentScore);
+  clickCount++;
+});
