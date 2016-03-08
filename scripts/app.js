@@ -104,6 +104,19 @@ var currentScore = 0;
 var clickCount = 0;
 var round = 0;
 
+var setNewRound = function(){
+    $('header').append(clients[round].story);
+    for (var x = 0; x<clients[round].tops.length; x++){
+        $('.tops').append("<button type='button' class='" + clients[round].tops[x].rank + "'><img src='" + clients[round].tops[x].img + "'></button>")
+      };
+    for (var y = 0; y<clients[round].bottoms.length; y++){
+        $('.bottoms').append("<button type='button' class='" + clients[round].bottoms[y].rank + "'><img src='" + clients[round].bottoms[y].img + "'></button>")
+      };
+    for (var z = 0; z<clients[round].accessories.length; z++){
+        $('.accessories').append("<button type='button' class='" + clients[round].accessories[z].rank + "'><img src='"+clients[round].accessories[z].img + "'></button>")
+      };
+  };
+
 //----------FOR LOOP TO LOOP THROUGH ARRAY-------------------------------
 //
 // for (var i = 0; i<clients.length; i++){
@@ -136,77 +149,75 @@ var round = 0;
 // });
 //
 
-// ------------ROUND ONE--------------------------------
-
-    var setNewRound = function(){
-          $('header').append(clients[round].story);
-          for (var x = 0; x<clients[round].tops.length; x++){
-              $('.tops').append("<button type='button' class='" + clients[round].tops[x].rank + "'><img src='" + clients[round].tops[x].img + "'></button>")
-            };
-          for (var y = 0; y<clients[round].bottoms.length; y++){
-              $('.bottoms').append("<button type='button' class='" + clients[round].bottoms[y].rank + "'><img src='" + clients[round].bottoms[y].img + "'></button>")
-            };
-          for (var z = 0; z<clients[round].accessories.length; z++){
-              $('.accessories').append("<button type='button' class='" + clients[round].accessories[z].rank + "'><img src='"+clients[round].accessories[z].img + "'></button>")
-            };
-      };
-
+// ------------SET UP PAGE--------------------------------
+$(document).ready(function(evt){
+$('button').click(function(e){
+    e.preventDefault();
+    $('header').empty();
+    $('.start').remove();
+    $('.rules').empty();
     setNewRound();
+    console.log('hey')
+  });
 
-    $('.tops').on('click', 'button', function(e){
-      e.preventDefault();
-      currentScore += +$(this).prop('class');
-      alert(currentScore);
-      clickCount++;
-      if(round >= clients.length){
-        $('header').empty();
-        $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
-      }else if(clickCount % 3 === 0){
-        $('header').empty();
-        $('.tops').empty();
-        $('.bottoms').empty();
-        $('.accessories').empty();
-        round++;
-        setNewRound();
-      };
+// ------------NAVIGATING THROUGH CLIENTS--------------------------------
 
-    });
+$('.tops').on('click', 'button', function(e){
+  e.preventDefault();
+  currentScore += +$(this).prop('class');
+  alert(currentScore);
+  clickCount++;
+  if(round >= clients.length){
+    $('header').empty();
+    $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
+  }else if(clickCount % 3 === 0){
+    $('header').empty();
+    $('.tops').empty();
+    $('.bottoms').empty();
+    $('.accessories').empty();
+    round++;
+    setNewRound();
+  };
 
-    $('.bottoms').on('click', 'button', function(e){
-      e.preventDefault();
-      currentScore += +$(this).prop('class');
-      alert(currentScore);
-      clickCount++;
-      if(round >= clients.length){
-        $('header').empty();
-        $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
-      }else if(clickCount % 3 === 0){
-        $('header').empty();
-        $('.tops').empty();
-        $('.bottoms').empty();
-        $('.accessories').empty();
-        round++;
-        setNewRound();
-      }
-    });
+});
 
-    $('.accessories').on('click', 'button', function(e){
-      e.preventDefault();
-      currentScore += +$(this).prop('class');
-      alert(currentScore);
-      clickCount++;
-      if(round >= clients.length){
-        $('header').empty();
-        $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
-      }else if(clickCount % 3 === 0){
-        $('header').empty();
-        $('.tops').empty();
-        $('.bottoms').empty();
-        $('.accessories').empty();
-        round++;
-        setNewRound();
-      }
-    });
+$('.bottoms').on('click', 'button', function(e){
+  e.preventDefault();
+  currentScore += +$(this).prop('class');
+  alert(currentScore);
+  clickCount++;
+  if(round >= clients.length){
+    $('header').empty();
+    $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
+  }else if(clickCount % 3 === 0){
+    $('header').empty();
+    $('.tops').empty();
+    $('.bottoms').empty();
+    $('.accessories').empty();
+    round++;
+    setNewRound();
+  }
+});
+
+$('.accessories').on('click', 'button', function(e){
+  e.preventDefault();
+  currentScore += +$(this).prop('class');
+  alert(currentScore);
+  clickCount++;
+  if(round >= clients.length){
+    $('header').empty();
+    $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
+  }else if(clickCount % 3 === 0){
+    $('header').empty();
+    $('.tops').empty();
+    $('.bottoms').empty();
+    $('.accessories').empty();
+    round++;
+    setNewRound();
+  }
+});
+
+});
 
 
 // // ------------ROUND TWO--------------------------------
