@@ -1,9 +1,10 @@
 body{
-  width: 1140px;
+  margin: 20px;
   font-family: 'Satisfy', cursive, serif;
   background-image: url('/Users/wileysb/code/wileysb88.github.io/project_1/pictures/background_image.jpeg') ;
   background-size: cover;
   background-position: center;
+  text-align: center;
 }
 
 #playingField{
@@ -11,14 +12,21 @@ body{
   text-align: center;
   margin: auto;
   color: white;
-  border-radius: 30%;
+  border-radius: 1%;
 }
-h1{
+header{
   font-size: 56px;
 }
 
 .rules{
   font-size: 20px;
+}
+
+.story{
+  font-size: 20px;
+  max-width: 800px;
+  text-align: center;
+  margin: auto;
 }
 
 
