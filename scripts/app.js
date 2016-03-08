@@ -102,13 +102,13 @@ for (var i = 0; i<clients.length; i++){
   $('header').append(clients[i].story);
   var thisClient = clients[i];
   for (var x = 0; x<clients[i].tops.length; x++){
-  $('.tops').append("<button type='button'><img src='"+thisClient.tops[x].img+"'></button>")
+  $('.tops').append("<button type='button' class='"+thisClient.tops[x].rank+"'><img src='"+thisClient.tops[x].img+"'></button>")
   };
   for (var y = 0; y<clients[i].bottoms.length; y++){
-  $('.bottoms').append("<button type='button'><img src='"+thisClient.bottoms[y].img+"'></button>")
+  $('.bottoms').append("<button type='button' class='"+thisClient.bottoms[y].rank+"'><img src='"+thisClient.bottoms[y].img+"'></button>")
   };
   for (var z = 0; z<clients[i].accessories.length; z++){
-  $('.accessories').append("<button type='button'><img src='"+thisClient.accessories[z].img+"'></button>")
+  $('.accessories').append("<button type='button' class='"+thisClient.accessories[z].rank+"'><img src='"+thisClient.accessories[z].img+"'></button>")
   };
   alert('THIS CLIENTS GREAT!')
 };
