@@ -1,13 +1,27 @@
 body{
   width: 1140px;
-  margin: auto;
-
+  font-family: 'Satisfy', cursive, serif;
+  background-image: url('/Users/wileysb/code/wileysb88.github.io/project_1/pictures/background_image.jpeg') ;
+  background-size: cover;
+  background-position: center;
 }
 
-header{
-  margin: 20px 0px;
+#playingField{
+  background-color: rgba(100, 101, 100, 0.7);
   text-align: center;
+  margin: auto;
+  color: white;
+  border-radius: 30%;
 }
+h1{
+  font-size: 56px;
+}
+
+.rules{
+  font-size: 20px;
+}
+
+
 img{
   border-radius: 10%;
   height: 200px;
@@ -17,6 +31,7 @@ button{
   border-radius: 10%;
   padding: 5px;
   margin: 15px;
+  font-family: 'Satisfy', cursive, serif;
 }
 
 #playingField{

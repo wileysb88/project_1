@@ -154,6 +154,7 @@ $(document).ready(function(evt){
 $('button').click(function(e){
     e.preventDefault();
     $('header').empty();
+    $('h1').empty();
     $('.start').remove();
     $('.rules').empty();
     setNewRound();
