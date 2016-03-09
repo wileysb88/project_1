@@ -131,20 +131,22 @@ var setNewRound = function(){
 // SINCE THIS IS SO REPETITIVE, NEED TO MAKE THIS A FUNCTION
 // BUT NEED TO FIX THE THIS IDEA
 
-// var clickFunction = function(){
-// 	currentScore += +$(this).prop('class');
-//   alert(currentScore);
-//   clickCount++;
-// 	if (round === clients.length){
-// 		emptyBoard();
-// 		$('header').append('GAME OVER!');
-// 		$('.story').append('You scored ' + currentScore + '! Congrats!')
-// 	}else if(clickCount % 3 === 0){
-//     emptyBoard();
-//     round++;
-//     setNewRound();
-//   };
-// };
+var clickFunction = function(){
+		if (clickCount % 3 === 0){
+				round++;
+				if (round === 5){
+					emptyBoard();
+					$('header').append('GAME OVER!');
+					$('.story').append('You scored ' + currentScore + '! Congrats!');
+					$('#playingField').append("<button type='button' class='playAgain'>Play Again?</button>");
+					console.log('ENDING')
+				}else {
+				emptyBoard();
+				setNewRound();
+				console.log('THIS SHOULD SWITCH')
+				};
+		};
+};
 
 //----------FOR LOOP TO LOOP THROUGH ARRAY-------------------------------
 //
@@ -182,10 +184,9 @@ var setNewRound = function(){
 $(document).ready(function(evt){
 $('button').click(function(e){
     e.preventDefault();
-    $('header .title').detach();
-    $('h1').detach();
-    $('.start').detach();
-    $('.rules').detach();
+    $('header').empty();
+    $('.start').remove();
+    $('div').empty();
     setNewRound();
     console.log('hey')
   });
@@ -194,63 +195,39 @@ $('button').click(function(e){
 
 $('.tops').on('click', 'button', function(e){
   e.preventDefault();
+	clickCount++;
 	currentScore += +$(this).prop('class');
-  alert(currentScore);
-  clickCount++;
-	// clickFunction();
-	if(clickCount % 3 === 0){
-		round++;
-		emptyBoard();
-    setNewRound();
-  }else if (round === clients.length){
-			emptyBoard();
-			$('header').append('GAME OVER!');
-			$('.story').append('You scored ' + currentScore + '! Congrats!');
-			$('').append("<button type='button' class='playAgain'>Play Again?</button>");
-		}
+	console.log(clickCount + ' ' + round + ' ' + clients.length);
+	clickFunction();
 });
+
+
 
 $('.bottoms').on('click', 'button', function(e){
   e.preventDefault();
+	clickCount++;
   currentScore += +$(this).prop('class');
-  alert(currentScore);
-  clickCount++;
-	// clickFunction();
-	if(clickCount % 3 === 0){
-		round++;
-	  emptyBoard();
-    setNewRound();
-  }else if (round === clients.length){
-			emptyBoard();
-			$('header').append('GAME OVER!');
-			$('.story').append('You scored ' + currentScore + '! Congrats!');
-			$('.buttonTiles').append("<button type='button' class='playAgain'>Play Again?</button>");
-		}
+	console.log(clickCount + ' ' + round + ' ' + clients.length);
+	clickFunction();
 });
 
 $('.accessories').on('click', 'button', function(e){
   e.preventDefault();
+	clickCount++;
   currentScore += +$(this).prop('class');
-  alert(currentScore);
-  clickCount++;
-	// clickFunction();
-  if(clickCount % 3 === 0){
-    emptyBoard();
-    setNewRound();
-		round++;
-  }else if (round === clients.length){
-			emptyBoard();
-			$('header').append('GAME OVER!');
-			$('.story').append('You scored ' + currentScore + '! Congrats!');
-			$('.buttonTiles').append("<button type='button' class='playAgain'>Play Again?</button>");
-		}
+	console.log(clickCount + ' ' + round + ' ' + clients.length);
+	clickFunction();
 });
 
 $('.playAgain').on('click', 'button', function(e){
   e.preventDefault();
-	emptyBoard();
-	$('#playingField').append('header .title');
-	$('#playingField').append('.rules');
-	$('#playingField').append('.start');
+	console.log("WORKING")
+	$('header').empty();
+	$('.story').empty();
+	$('header').html('So You Think You Can Style?');
+	$('div').append("<div class='rules'>Clients will come in and describes an event for which they need an outfit<br> it’s your job to pick from a list of 12 items (3 tops, 3 bottoms, 3 accessories).	<br> Pair the best top, bottom and accessory together and see what the client thinks!	<br>Where will you stand after styling 10 clients?	<br>Will you end up looking SO last season or finish being a true fashionista?<br>	<br>Try your luck with<br>So You Think You Can Style?</div>");
+	$('#playingField').append('<button type="button" class="start">Start styling!</button>');
+
+});
 
 });
