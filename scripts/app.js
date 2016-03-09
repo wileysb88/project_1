@@ -1,3 +1,5 @@
+//-------------CLIENTS ARRAY---------------------
+
 var clients = [
 	{
     client: 'Music Festival',
@@ -104,28 +106,45 @@ var currentScore = 0;
 var clickCount = 0;
 var round = 0;
 
-
-var setNewRound = function(){
-		$('header').append(clients[round].client)
-    $('.story').append('"'+ clients[round].story + '"');
-    for (var x = 0; x<clients[round].tops.length; x++){
-        $('.tops').append("<button type='button' class='" + clients[round].tops[x].rank + "'><img src='" + clients[round].tops[x].img + "'></button>")
-      };
-    for (var y = 0; y<clients[round].bottoms.length; y++){
-        $('.bottoms').append("<button type='button' class='" + clients[round].bottoms[y].rank + "'><img src='" + clients[round].bottoms[y].img + "'></button>")
-      };
-    for (var z = 0; z<clients[round].accessories.length; z++){
-        $('.accessories').append("<button type='button' class='" + clients[round].accessories[z].rank + "'><img src='"+clients[round].accessories[z].img + "'></button>")
-    	};
-	};
-
-var emptyElements = function(){
+var emptyBoard = function(){
 		$('.story').empty();
 		$('.tops').empty();
 		$('.bottoms').empty();
 		$('.accessories').empty();
 		$('header').empty();
 }
+
+var setNewRound = function(){
+		$('header').append(clients[round].client)
+    $('.story').append('"'+ clients[round].story + '"');
+    for (var x = 0; x<clients[round].tops.length; x++){
+        $('.tops').append("<button type='button' class='" + clients[round].tops[x].rank + "' draggable='true'><img src='" + clients[round].tops[x].img + "'></button>")
+      };
+    for (var y = 0; y<clients[round].bottoms.length; y++){
+        $('.bottoms').append("<button type='button' class='" + clients[round].bottoms[y].rank + "' draggable='true'><img src='" + clients[round].bottoms[y].img + "'></button>")
+      };
+    for (var z = 0; z<clients[round].accessories.length; z++){
+        $('.accessories').append("<button type='button' class='" + clients[round].accessories[z].rank + "' draggable='true'><img src='"+clients[round].accessories[z].img + "'></button>")
+    	};
+	};
+
+// SINCE THIS IS SO REPETITIVE, NEED TO MAKE THIS A FUNCTION
+// BUT NEED TO FIX THE THIS IDEA
+
+// var clickFunction = function(){
+// 	currentScore += +$(this).prop('class');
+//   alert(currentScore);
+//   clickCount++;
+// 	if (round === clients.length){
+// 		emptyBoard();
+// 		$('header').append('GAME OVER!');
+// 		$('.story').append('You scored ' + currentScore + '! Congrats!')
+// 	}else if(clickCount % 3 === 0){
+//     emptyBoard();
+//     round++;
+//     setNewRound();
+//   };
+// };
 
 //----------FOR LOOP TO LOOP THROUGH ARRAY-------------------------------
 //
@@ -163,10 +182,10 @@ var emptyElements = function(){
 $(document).ready(function(evt){
 $('button').click(function(e){
     e.preventDefault();
-    $('header').empty();
-    $('h1').empty();
-    $('.start').remove();
-    $('.rules').empty();
+    $('header .title').detach();
+    $('h1').detach();
+    $('.start').detach();
+    $('.rules').detach();
     setNewRound();
     console.log('hey')
   });
@@ -175,18 +194,20 @@ $('button').click(function(e){
 
 $('.tops').on('click', 'button', function(e){
   e.preventDefault();
-  currentScore += +$(this).prop('class');
+	currentScore += +$(this).prop('class');
   alert(currentScore);
   clickCount++;
-  if(round >= clients.length){
-    $('header').empty();
-    $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
-  }else if(clickCount % 3 === 0){
-    emptyElements();
-    round++;
+	// clickFunction();
+	if(clickCount % 3 === 0){
+		round++;
+		emptyBoard();
     setNewRound();
-  };
-
+  }else if (round === clients.length){
+			emptyBoard();
+			$('header').append('GAME OVER!');
+			$('.story').append('You scored ' + currentScore + '! Congrats!');
+			$('').append("<button type='button' class='playAgain'>Play Again?</button>");
+		}
 });
 
 $('.bottoms').on('click', 'button', function(e){
@@ -194,14 +215,17 @@ $('.bottoms').on('click', 'button', function(e){
   currentScore += +$(this).prop('class');
   alert(currentScore);
   clickCount++;
-  if(round >= clients.length){
-    $('header').empty();
-    $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
-  }else if(clickCount % 3 === 0){
-    emptyElements();
-    round++;
+	// clickFunction();
+	if(clickCount % 3 === 0){
+		round++;
+	  emptyBoard();
     setNewRound();
-  }
+  }else if (round === clients.length){
+			emptyBoard();
+			$('header').append('GAME OVER!');
+			$('.story').append('You scored ' + currentScore + '! Congrats!');
+			$('.buttonTiles').append("<button type='button' class='playAgain'>Play Again?</button>");
+		}
 });
 
 $('.accessories').on('click', 'button', function(e){
@@ -209,14 +233,24 @@ $('.accessories').on('click', 'button', function(e){
   currentScore += +$(this).prop('class');
   alert(currentScore);
   clickCount++;
-  if(round >= clients.length){
-    $('header').empty();
-    $('header').append('Game Over! Your Score is ' + currentScore + '! Congratulations!')
-  }else if(clickCount % 3 === 0){
-    emptyElements();
-    round++;
+	// clickFunction();
+  if(clickCount % 3 === 0){
+    emptyBoard();
     setNewRound();
-  }
+		round++;
+  }else if (round === clients.length){
+			emptyBoard();
+			$('header').append('GAME OVER!');
+			$('.story').append('You scored ' + currentScore + '! Congrats!');
+			$('.buttonTiles').append("<button type='button' class='playAgain'>Play Again?</button>");
+		}
 });
+
+$('.playAgain').on('click', 'button', function(e){
+  e.preventDefault();
+	emptyBoard();
+	$('#playingField').append('header .title');
+	$('#playingField').append('.rules');
+	$('#playingField').append('.start');
 
 });
