@@ -90,6 +90,16 @@ body{
 
 }
 
+.dropHere{
+  height: 200px;
+  width: 200px;
+  background-color: rgba(100, 101, 100, 0.7);
+  border: 3px solid white;
+  display: inline-block;
+  margin: auto;
+  border-radius: 10%
+
+}
 
 
 img{

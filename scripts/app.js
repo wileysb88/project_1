@@ -121,12 +121,15 @@ var setNewRound = function(){
     for (var x = 0; x<clients[round].tops.length; x++){
         $('.tops').append("<button type='button' class='" + clients[round].tops[x].rank + "' draggable='true'><img src='" + clients[round].tops[x].img + "'></button>")
       };
+		$('.tops').append("<div class='dropHere'>PLACE TOP HERE</div>");
     for (var y = 0; y<clients[round].bottoms.length; y++){
         $('.bottoms').append("<button type='button' class='" + clients[round].bottoms[y].rank + "' draggable='true'><img src='" + clients[round].bottoms[y].img + "'></button>")
       };
+		$('.bottoms').append("<div class='dropHere'>PLACE BOTTOM HERE</div>");
     for (var z = 0; z<clients[round].accessories.length; z++){
         $('.accessories').append("<button type='button' class='" + clients[round].accessories[z].rank + "' draggable='true'><img src='"+clients[round].accessories[z].img + "'></button>")
     	};
+		$('.accessories').append("<div class='dropHere'>PLACE ACCESSORY HERE</div>");
 	};
 
 // SINCE THIS IS SO REPETITIVE, NEED TO MAKE THIS A FUNCTION
