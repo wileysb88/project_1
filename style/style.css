@@ -1,48 +1,106 @@
 body{
-  margin: 20px;
-  font-family: 'Satisfy', cursive, serif;
+  color: white;
   background-image: url('/Users/wileysb/code/wileysb88.github.io/project_1/pictures/background_image.jpeg') ;
   background-size: cover;
   background-position: center;
   text-align: center;
 }
 
-#playingField{
+#textSection{
   background-color: rgba(100, 101, 100, 0.7);
-  text-align: center;
-  margin: auto;
+  border-radius: 3%;
   color: white;
-  border-radius: 1%;
+  width: 800px;
+  margin: auto;
+  padding: 20px;
 }
-header{
+
+
+
+.initialInfo{
+
+}
+
+
+
+.title{
+  font-family: 'Satisfy', cursive, serif;
   font-size: 56px;
+
+
+
 }
 
 .rules{
-  font-size: 20px;
+  font-family: 'Bad Script', cursive;
+  font-size: 24px;
+
+}
+
+.start{
+  font-family: 'Satisfy', cursive, serif;
+
+
+}
+
+.clientTitle{
+  font-family: 'Satisfy', cursive, serif;
+  font-size: 56px;
+
 }
 
 .story{
-  font-size: 20px;
-  max-width: 800px;
-  text-align: center;
-  margin: auto;
+    font-family: 'Bad Script', cursive;
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+    line-height: 150%;
+
+
 }
+
+.endingInfo{
+
+
+}
+
+.gameOver{
+  font-family: 'Satisfy', cursive, serif;
+  font-size: 56px;
+
+}
+
+.score{
+    font-family: 'Bad Script', cursive;
+    font-size: 36px;
+
+
+}
+
+.playAgain{
+  font-family: 'Satisfy', cursive, serif;
+
+}
+
+.buttonTiles{
+  border-radius: 10%;
+  padding: 5px;
+  margin: 15px;
+
+
+}
+
 
 
 img{
   border-radius: 10%;
   height: 200px;
-  width: 200px;s
+  width: 200px;
 }
 button{
   border-radius: 10%;
   padding: 5px;
   margin: 15px;
   font-family: 'Satisfy', cursive, serif;
-}
-
-#playingField{
-  margin: auto;
-  text-align: center;
+  font-size: 30px;
 }

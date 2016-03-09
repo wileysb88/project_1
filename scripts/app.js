@@ -112,10 +112,11 @@ var emptyBoard = function(){
 		$('.bottoms').empty();
 		$('.accessories').empty();
 		$('header').empty();
+		$('.clientTitle').empty();
 }
 
 var setNewRound = function(){
-		$('header').append(clients[round].client)
+		$('.clientTitle').append(clients[round].client)
     $('.story').append('"'+ clients[round].story + '"');
     for (var x = 0; x<clients[round].tops.length; x++){
         $('.tops').append("<button type='button' class='" + clients[round].tops[x].rank + "' draggable='true'><img src='" + clients[round].tops[x].img + "'></button>")
