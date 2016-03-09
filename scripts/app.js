@@ -136,10 +136,10 @@ var clickFunction = function(){
 				round++;
 				if (round === 5){
 					emptyBoard();
-					$('header').append('GAME OVER!');
-					$('.story').append('You scored ' + currentScore + '! Congrats!');
-					$('#playingField').append("<button type='button' class='playAgain'>Play Again?</button>");
+					$('.endingInfo').toggle();
+					$('.endingInfo .score').append('<div>Your score is ' + currentScore + '! Congratulations you fashionista!')
 					console.log('ENDING')
+
 				}else {
 				emptyBoard();
 				setNewRound();
@@ -182,18 +182,20 @@ var clickFunction = function(){
 
 // ------------SET UP PAGE--------------------------------
 $(document).ready(function(evt){
-$('button').click(function(e){
+	$('.endingInfo').toggle();
+	$('.start').click(function(e){
     e.preventDefault();
-    $('header').empty();
-    $('.start').remove();
-    $('div').empty();
+    // $('header').empty();
+    // $('.start').remove();
+    // $('div').empty();
+		$('.initialInfo').toggle();
     setNewRound();
     console.log('hey')
   });
 
 // ------------NAVIGATING THROUGH CLIENTS--------------------------------
 
-$('.tops').on('click', 'button', function(e){
+ $('.tops').on('click', 'button', function(e) {
   e.preventDefault();
 	clickCount++;
 	currentScore += +$(this).prop('class');
@@ -201,9 +203,7 @@ $('.tops').on('click', 'button', function(e){
 	clickFunction();
 });
 
-
-
-$('.bottoms').on('click', 'button', function(e){
+ $('.bottoms').on('click', 'button', function(e) {
   e.preventDefault();
 	clickCount++;
   currentScore += +$(this).prop('class');
@@ -211,7 +211,7 @@ $('.bottoms').on('click', 'button', function(e){
 	clickFunction();
 });
 
-$('.accessories').on('click', 'button', function(e){
+$('.accessories').on('click', 'button', function(e) {
   e.preventDefault();
 	clickCount++;
   currentScore += +$(this).prop('class');
@@ -219,15 +219,22 @@ $('.accessories').on('click', 'button', function(e){
 	clickFunction();
 });
 
-$('.playAgain').on('click', 'button', function(e){
-  e.preventDefault();
-	console.log("WORKING")
-	$('header').empty();
-	$('.story').empty();
-	$('header').html('So You Think You Can Style?');
-	$('div').append("<div class='rules'>Clients will come in and describes an event for which they need an outfit<br> it’s your job to pick from a list of 12 items (3 tops, 3 bottoms, 3 accessories).	<br> Pair the best top, bottom and accessory together and see what the client thinks!	<br>Where will you stand after styling 10 clients?	<br>Will you end up looking SO last season or finish being a true fashionista?<br>	<br>Try your luck with<br>So You Think You Can Style?</div>");
-	$('#playingField').append('<button type="button" class="start">Start styling!</button>');
-
+$('.endingInfo').on('click', '#playAgain', function(e) {
+	e.preventDefault();
+	console.log('WORK');
+	$('.endingInfo').toggle();
+	$('.endingInfo .score').empty();
+	$('.initialInfo').toggle();
+	round = 0;
+	clickCount = 0;
+	currentScore = 0;
+	// $('header').empty();
+	// $('.story').empty();
+	// $('header').html('So You Think You Can Style?');
+	// $('div').append("<div class='rules'>Clients will come in and describes an event for which they need an outfit<br> it’s your job to pick from a list of 12 items (3 tops, 3 bottoms, 3 accessories).	<br> Pair the best top, bottom and accessory together and see what the client thinks!	<br>Where will you stand after styling 10 clients?	<br>Will you end up looking SO last season or finish being a true fashionista?<br>	<br>Try your luck with<br>So You Think You Can Style?</div>");
+	// $('#playingField').append('<button type="button" class="start">Start styling!</button>');
 });
+
+
 
 });
