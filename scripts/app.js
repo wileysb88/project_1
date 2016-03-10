@@ -124,16 +124,45 @@ var setNewRound = function(){
     for (var x = 0; x<clients[round].tops.length; x++){
         $('.tops').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
       };
-		$('.tops').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
+		$('.tops').append("<div class='dropzoneTop'><div class='wordsTop'>Place Top Here</div></div>");
     for (var y = 0; y<clients[round].bottoms.length; y++){
         $('.bottoms').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
       };
-		$('.bottoms').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
+		$('.bottoms').append("<div class='dropzoneBottom'><div class='wordsBottom'>Place Bottom Here</div></div>");
     for (var z = 0; z<clients[round].accessories.length; z++){
         $('.accessories').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
     	};
-		$('.accessories').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
+		$('.accessories').append("<div class='dropzoneAccessory'><div class='wordsAccessory'>Place Accessory Here</div></div>");
 	};
+
+//----------------DROPSWITCH FUNCTION----------------
+
+var dropSwitch = function(){
+	if (dropCount % 3 === 0){
+			round++;
+			if (round === clients.length){
+				emptyBoard();
+				$('.endingInfo').toggle();
+				$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
+				if(currentScore <= 60){
+					$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
+				}else if( currentScore > 60 && currentScore < 150){
+					$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
+				}else if(currentScore >= 150){
+					$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
+				};
+				$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
+				console.log('ENDING')
+
+			}else {
+			emptyBoard();
+			setNewRound();
+			// console.log('THIS SHOULD SWITCH')
+			};
+	};
+}
+
+
 //--------------DRAG AND DROP START------------------------------
 
 var dragged;
@@ -144,12 +173,10 @@ document.addEventListener('drag', function(e) {
 
 document.addEventListener('dragstart', function(e) {
   dragged = e.target;
-
   e.target.style.opacity = 0.5;
 }, false);
 
 document.addEventListener('dragend', function(e) {
-
   e.target.style.opacity = '';
 }, false);
 
@@ -171,46 +198,105 @@ document.addEventListener('dragleave', function(e) {
 
 document.addEventListener('drop', function(e) {
   e.preventDefault();
-  if(e.target.className === "dropzone") {
+  if(e.target.className === "dropzoneTop") {
     e.target.style.background = "";
 		currentScore += +$(dragged).prop('class');
     // dragged.parentNode.removeChild(dragged);
     e.target.appendChild(dragged);
+		$(dragged).css('margin','0');
+		$('.wordsTop').html('')
 		dropCount++;
-		if (dropCount % 3 === 0){
-				round++;
-				if (round === clients.length){
-					emptyBoard();
-					$('.endingInfo').toggle();
-					$('.endingInfo .score').append('<div>Your score is ' + currentScore + '! Congratulations you fashionista!')
-					console.log('ENDING')
-
-				}else {
-				emptyBoard();
-				setNewRound();
-				console.log('THIS SHOULD SWITCH')
-				};
-  	};
+		dropSwitch();
+		// if (dropCount % 3 === 0){
+		// 		round++;
+		// 		if (round === clients.length){
+		// 			emptyBoard();
+		// 			$('.endingInfo').toggle();
+		// 			$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
+		// 			if(currentScore <= 60){
+		// 				$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
+		// 			}else if( currentScore > 60 && currentScore < 150){
+		// 				$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
+		// 			}else if(currentScore >= 150){
+		// 				$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
+		// 			};
+		// 			$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
+		// 			console.log('ENDING')
+		//
+		// 		}else {
+		// 		emptyBoard();
+		// 		setNewRound();
+		// 		// console.log('THIS SHOULD SWITCH')
+		// 		};
+  	// };
+	};
+	if(e.target.className === "dropzoneBottom") {
+    e.target.style.background = "";
+		currentScore += +$(dragged).prop('class');
+    // dragged.parentNode.removeChild(dragged);
+    e.target.appendChild(dragged);
+		$(dragged).css('margin','0');
+		$('.wordsBottom').html('')
+		dropCount++;
+		dropSwitch();
+		// if (dropCount % 3 === 0){
+		// 		round++;
+		// 		if (round === clients.length){
+		// 			emptyBoard();
+		// 			$('.endingInfo').toggle();
+		// 			$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
+		// 			if(currentScore <= 60){
+		// 				$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
+		// 			}else if( currentScore > 60 && currentScore < 150){
+		// 				$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
+		// 			}else if(currentScore >= 150){
+		// 				$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
+		// 			};
+		// 			$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
+		// 			console.log('ENDING')
+		//
+		// 		}else {
+		// 		emptyBoard();
+		// 		setNewRound();
+		// 		// console.log('THIS SHOULD SWITCH')
+		// 		};
+  	// };
+	};
+	if(e.target.className === "dropzoneAccessory") {
+    e.target.style.background = "";
+		currentScore += +$(dragged).prop('class');
+    // dragged.parentNode.removeChild(dragged);
+    e.target.appendChild(dragged);
+		$(dragged).css('margin','0');
+		$('.wordsAccessory').html('')
+		dropCount++;
+		dropSwitch();
+		// if (dropCount % 3 === 0){
+		// 		round++;
+		// 		if (round === clients.length){
+		// 			emptyBoard();
+		// 			$('.endingInfo').toggle();
+		// 			$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
+		// 			if(currentScore <= 60){
+		// 				$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
+		// 			}else if( currentScore > 60 && currentScore < 150){
+		// 				$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
+		// 			}else if(currentScore >= 150){
+		// 				$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
+		// 			};
+		// 			$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
+		// 			console.log('ENDING')
+		//
+		// 		}else {
+		// 		emptyBoard();
+		// 		setNewRound();
+		// 		// console.log('THIS SHOULD SWITCH')
+		// 		};
+  	// };
 	};
 }, false);
 
 
-
-
-
-// -------------HOW TO APPLY THIS TO DROPS WITHIN DROP FUNCTION--------------------------
-// 	 $('.tops').on('click', 'button', function(e) {
-// 	  e.preventDefault();
-// 		clickCount++;
-
-
-//----add the below under the drop element?------
-// 		currentScore += +$(this).prop('class');
-
-
-// 		console.log(clickCount + ' ' + round + ' ' + clients.length);
-// 		clickFunction();
-// 	});
 
 //--------------SET NEW ROUND FOR BUTTON CLICKS WITH SOME APPENDING WEIRDNESS----------
 // var setNewRound = function(){
@@ -232,24 +318,24 @@ document.addEventListener('drop', function(e) {
 
 //-------------NAVIGATING THROUGH PAGES THROUGH CLICKING-----------------------------
 
-	var clickFunction = function(){
-			if (clickCount % 3 === 0){
-					round++;
-					if (round === 5){
-						emptyBoard();
-						$('.endingInfo').toggle();
-						$('.endingInfo .score').append('<div>Your score is ' + currentScore + '! Congratulations you fashionista!')
-						console.log('ENDING')
+	// var clickFunction = function(){
+	// 		if (clickCount % 3 === 0){
+	// 				round++;
+	// 				if (round === 5){
+	// 					emptyBoard();
+	// 					$('.endingInfo').toggle();
+	// 					$('.endingInfo .score').append('<div>Your score is ' + currentScore + '! Congratulations you fashionista!')
+	// 					console.log('ENDING')
+	//
+	// 				}else {
+	// 				emptyBoard();
+	// 				setNewRound();
+	// 				console.log('THIS SHOULD SWITCH')
+	// 				};
+	// 		};
+	// };
 
-					}else {
-					emptyBoard();
-					setNewRound();
-					console.log('THIS SHOULD SWITCH')
-					};
-			};
-	};
-
-//----------FOR LOOP TO LOOP THROUGH ARRAY-------------------------------
+//----------FOR LOOP TO LOOP THROUGH ARRAY IF NEEDED IN FUTURE-------------------------------
 //
 // for (var i = 0; i<clients.length; i++){
 //   $('header').append(clients[i].story);
@@ -271,15 +357,6 @@ document.addEventListener('drop', function(e) {
 //  alert('THIS CLIENTS GREAT!')
 //
 // };
-//-------------BEGINNING SCREEN--------------------------------
-//
-// $('header').append('<h1>SO YOU THINK YOU CAN STYLE?</h1>')
-// $('#playingField').append('<button type="button" class="start">START STYLING</button>')
-// $('#playingField').on('click', 'button', function(e){
-//   $('header').detach();
-//   $('.start').detach();
-// });
-//
 
 // ------------SET UP PAGE--------------------------------
 $(document).ready(function(evt){
@@ -291,6 +368,8 @@ $(document).ready(function(evt){
     // $('header').empty();
     // $('.start').remove();
     // $('div').empty();
+
+		//-------TOGGLE INITIAL INFO-----------------
 
 		$('.initialInfo').toggle();
     setNewRound();
@@ -315,17 +394,19 @@ $(document).ready(function(evt){
 // 	console.log(clickCount + ' ' + round + ' ' + clients.length);
 // 	clickFunction();
 // });
+//
+//
+//
+// $('.accessories').on('click', 'button', function(e) {
+//   e.preventDefault();
+// 	clickCount++;
+//   currentScore += +$(this).prop('class');
+// 	console.log(clickCount + ' ' + round + ' ' + clients.length);
+// 	clickFunction();
+// });
 
 
-// --------STILL NECESSARY OT START AND RESTART--------------------------
-$('.accessories').on('click', 'button', function(e) {
-  e.preventDefault();
-	clickCount++;
-  currentScore += +$(this).prop('class');
-	console.log(clickCount + ' ' + round + ' ' + clients.length);
-	clickFunction();
-});
-
+// ---------------PLAY AGAIN BUTTON---------------------------------------
 $('.endingInfo').on('click', '#playAgain', function(e) {
 	e.preventDefault();
 	console.log('WORK');
@@ -335,6 +416,8 @@ $('.endingInfo').on('click', '#playAgain', function(e) {
 	round = 0;
 	clickCount = 0;
 	currentScore = 0;
+
+	// --------USED BEFORE TOGGLE-------------------
 	// $('header').empty();
 	// $('.story').empty();
 	// $('header').html('So You Think You Can Style?');

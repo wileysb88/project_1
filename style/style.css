@@ -84,22 +84,62 @@ body{
 
 .buttonTiles{
   border-radius: 10%;
-  padding: 5px;
-  margin: 15px;
+  display: inline-block;
+  margin-top: 35px;
+
 
 
 }
 
-.dropzone{
+.top{
+  margin-bottom: 5px;
+}
+
+.bottom{
+    margin-bottom: 5px;
+}
+
+.accessories{
+    margin-bottom: 5px;
+}
+
+.dropzoneTop{
   height: 200px;
   width: 200px;
   background-color: rgba(100, 101, 100, 0.7);
   border: 3px dashed white;
-  display: inline-block;
-  margin-left: 100px;
   border-radius: 10%;
   text-align: center;
+  font-family: 'Bad Script ', cursive, serif;
+  float: right;
+  margin-left: 35px;
+  margin-top: 15px;
+}
 
+.dropzoneBottom{
+  height: 200px;
+  width: 200px;
+  background-color: rgba(100, 101, 100, 0.7);
+  border: 3px dashed white;
+  border-radius: 10%;
+  text-align: center;
+  font-family: 'Bad Script ', cursive, serif;
+  float: right;
+  margin-left: 35px;
+  margin-top: 15px;
+}
+
+.dropzoneAccessory{
+  height: 200px;
+  width: 200px;
+  background-color: rgba(100, 101, 100, 0.7);
+  border: 3px dashed white;
+  border-radius: 10%;
+  text-align: center;
+  font-family: 'Bad Script ', cursive, serif;
+  float: right;
+  margin-left: 35px;
+  margin-top: 15px;
 }
 
 
@@ -107,11 +147,6 @@ img{
   border-radius: 10%;
   height: 200px;
   width: 200px;
-}
-button{
-  border-radius: 10%;
-  padding: 5px;
+  border: 5px solid rgba(100, 101, 100, 0.);
   margin: 15px;
-  font-family: 'Satisfy', cursive, serif;
-  font-size: 30px;
 }
