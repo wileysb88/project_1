@@ -107,6 +107,10 @@ var clickCount = 0;
 var round = 0;
 var dropCount = 0;
 
+
+
+
+
 // ---------------clears board--------------------------------
 var emptyBoard = function(){
 		$('.story').empty();
@@ -123,48 +127,55 @@ var setNewRound = function(){
 		$('.clientTitle').append(clients[round].client);
     $('.story').append('"'+ clients[round].story + '"');
     for (var x = 0; x<clients[round].tops.length; x++){
-        $('.tops').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
+        $('.tops').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
 		$('.tops').append("<div class='dropzoneTop'><div class='wordsTop'>Place Top Here</div></div>");
     for (var y = 0; y<clients[round].bottoms.length; y++){
-        $('.bottoms').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
+        $('.bottoms').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
 		$('.bottoms').append("<div class='dropzoneBottom'><div class='wordsBottom'>Place Bottom Here</div></div>");
     for (var z = 0; z<clients[round].accessories.length; z++){
-        $('.accessories').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
+        $('.accessories').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
     	};
 		$('.accessories').append("<div class='dropzoneAccessory'><div class='wordsAccessory'>Place Accessory Here</div></div>");
 	};
+
+
+//--------------END FUNCTION----------------------------------
+var endFunction = function(){
+		emptyBoard();
+		$('.endingInfo').toggle();
+		$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
+		if(currentScore <= 60){
+			$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
+		}else if( currentScore > 60 && currentScore < 150){
+			$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
+		}else if(currentScore >= 150){
+			$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
+		};
+	console.log('ENDING')
+};
+
+
 
 //----------------DROPSWITCH FUNCTION----------------
 
 var dropSwitch = function(){
 	if (dropCount % 3 === 0){
+			$('.submitSection').append("<button class='submit'>Like this look?</button>");
 			round++;
-			$('.submitSection').append("<button class='submit'>Like this look?></button>");
-			$('.submitSection').on('click', '.submit', function(e) {
-				if (round === clients.length){
-					emptyBoard();
-					$('.endingInfo').toggle();
-					$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
-					if(currentScore <= 60){
-						$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
-					}else if( currentScore > 60 && currentScore < 150){
-						$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
-					}else if(currentScore >= 150){
-						$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
-					};
-					$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
-					console.log('ENDING')
-
-				}else {
-				emptyBoard();
-				setNewRound();
-				// console.log('THIS SHOULD SWITCH')
-			};
-		});
 	};
 };
+
+$('.submitSection').on('click', '.submit', function(e) {
+	console.log(currentScore + '   ' + round + '   ' + clients.length)
+	if (round === clients.length){
+		endFunction();
+	}else{
+		emptyBoard();
+		setNewRound();
+	}
+});
 
 
 //--------------DRAG AND DROP START------------------------------
@@ -189,7 +200,11 @@ document.addEventListener('dragover', function(e) {
 }, false);
 
 document.addEventListener('dragenter', function(e) {
-  if(e.target.className === "dropzone") {
+  if(e.target.className === "dropzoneTop") {
+    e.target.style.background = "rgba(205, 52, 167, 0.42)";
+  }else if(e.target.className === "dropzoneBottom") {
+    e.target.style.background = "rgba(205, 52, 167, 0.42)";
+  }else if(e.target.className === "dropzoneAccessory") {
     e.target.style.background = "rgba(205, 52, 167, 0.42)";
   }
 }, false);
@@ -205,7 +220,6 @@ document.addEventListener('drop', function(e) {
   if(e.target.className === "dropzoneTop") {
     e.target.style.background = "";
 		currentScore += +$(dragged).prop('class');
-    // dragged.parentNode.removeChild(dragged);
     e.target.appendChild(dragged);
 		$(dragged).css('margin','0');
 		$('.wordsTop').html('')
@@ -215,7 +229,6 @@ document.addEventListener('drop', function(e) {
 	if(e.target.className === "dropzoneBottom") {
     e.target.style.background = "";
 		currentScore += +$(dragged).prop('class');
-    // dragged.parentNode.removeChild(dragged);
     e.target.appendChild(dragged);
 		$(dragged).css('margin','0');
 		$('.wordsBottom').html('')
@@ -225,7 +238,6 @@ document.addEventListener('drop', function(e) {
 	if(e.target.className === "dropzoneAccessory") {
     e.target.style.background = "";
 		currentScore += +$(dragged).prop('class');
-    // dragged.parentNode.removeChild(dragged);
     e.target.appendChild(dragged);
 		$(dragged).css('margin','0');
 		$('.wordsAccessory').html('')
@@ -298,7 +310,6 @@ document.addEventListener('drop', function(e) {
 
 // ------------SET UP PAGE--------------------------------
 $(document).ready(function(evt){
-	$('.endingInfo').toggle();
 	$('.start').click(function(e){
     e.preventDefault();
 
