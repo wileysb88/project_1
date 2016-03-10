@@ -105,6 +105,7 @@ var clients = [
 var currentScore = 0;
 var clickCount = 0;
 var round = 0;
+var dropCount = 0;
 
 // ---------------clears board--------------------------------
 var emptyBoard = function(){
@@ -116,8 +117,24 @@ var emptyBoard = function(){
 		$('.clientTitle').empty();
 }
 
-
-
+//--------------SET NEW ROUND FOR DRAG AND DROP -------------------------------
+var setNewRound = function(){
+		$('.clientTitle').append(clients[round].client);
+    $('.story').append('"'+ clients[round].story + '"');
+    for (var x = 0; x<clients[round].tops.length; x++){
+        $('.tops').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
+      };
+		$('.tops').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
+    for (var y = 0; y<clients[round].bottoms.length; y++){
+        $('.bottoms').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
+      };
+		$('.bottoms').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
+    for (var z = 0; z<clients[round].accessories.length; z++){
+        $('.accessories').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
+    	};
+		$('.accessories').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
+	};
+//--------------DRAG AND DROP START------------------------------
 
 var dragged;
 
@@ -156,29 +173,43 @@ document.addEventListener('drop', function(e) {
   e.preventDefault();
   if(e.target.className === "dropzone") {
     e.target.style.background = "";
-    dragged.parentNode.removeChild(dragged);
+    // dragged.parentNode.removeChild(dragged);
     e.target.appendChild(dragged);
-  }
+		dropCount++;
+		if (dropCount % 3 === 0){
+				round++;
+				if (round === 5){
+					emptyBoard();
+					$('.endingInfo').toggle();
+					$('.endingInfo .score').append('<div>Your score is ' + currentScore + '! Congratulations you fashionista!')
+					console.log('ENDING')
+
+				}else {
+				emptyBoard();
+				setNewRound();
+				console.log('THIS SHOULD SWITCH')
+				};
+  	};
+	};
 }, false);
 
-//--------------SET NEW ROUND FOR DRAG AND DROP -------------------------------
-var setNewRound = function(){
-		$('.clientTitle').append(clients[round].client);
-    $('.story').append('"'+ clients[round].story + '"');
-    for (var x = 0; x<clients[round].tops.length; x++){
-        $('.tops').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
-      };
-		$('.tops').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
-    for (var y = 0; y<clients[round].bottoms.length; y++){
-        $('.bottoms').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
-      };
-		$('.bottoms').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
-    for (var z = 0; z<clients[round].accessories.length; z++){
-        $('.accessories').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
-    	};
-		$('.accessories').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
-	};
 
+
+
+
+// -------------HOW TO APPLY THIS TO DROPS WITHIN DROP FUNCTION--------------------------
+// 	 $('.tops').on('click', 'button', function(e) {
+// 	  e.preventDefault();
+// 		clickCount++;
+
+
+//----add the below under the drop element?------
+// 		currentScore += +$(this).prop('class');
+
+
+// 		console.log(clickCount + ' ' + round + ' ' + clients.length);
+// 		clickFunction();
+// 	});
 
 //--------------SET NEW ROUND FOR BUTTON CLICKS WITH SOME APPENDING WEIRDNESS----------
 // var setNewRound = function(){
@@ -200,23 +231,22 @@ var setNewRound = function(){
 
 //-------------NAVIGATING THROUGH PAGES THROUGH CLICKING-----------------------------
 
+	var clickFunction = function(){
+			if (clickCount % 3 === 0){
+					round++;
+					if (round === 5){
+						emptyBoard();
+						$('.endingInfo').toggle();
+						$('.endingInfo .score').append('<div>Your score is ' + currentScore + '! Congratulations you fashionista!')
+						console.log('ENDING')
 
-var clickFunction = function(){
-		if (clickCount % 3 === 0){
-				round++;
-				if (round === 5){
+					}else {
 					emptyBoard();
-					$('.endingInfo').toggle();
-					$('.endingInfo .score').append('<div>Your score is ' + currentScore + '! Congratulations you fashionista!')
-					console.log('ENDING')
-
-				}else {
-				emptyBoard();
-				setNewRound();
-				console.log('THIS SHOULD SWITCH')
-				};
-		};
-};
+					setNewRound();
+					console.log('THIS SHOULD SWITCH')
+					};
+			};
+	};
 
 //----------FOR LOOP TO LOOP THROUGH ARRAY-------------------------------
 //
