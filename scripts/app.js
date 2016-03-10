@@ -173,12 +173,13 @@ document.addEventListener('drop', function(e) {
   e.preventDefault();
   if(e.target.className === "dropzone") {
     e.target.style.background = "";
+		currentScore += +$(dragged).prop('class');
     // dragged.parentNode.removeChild(dragged);
     e.target.appendChild(dragged);
 		dropCount++;
 		if (dropCount % 3 === 0){
 				round++;
-				if (round === 5){
+				if (round === clients.length){
 					emptyBoard();
 					$('.endingInfo').toggle();
 					$('.endingInfo .score').append('<div>Your score is ' + currentScore + '! Congratulations you fashionista!')
