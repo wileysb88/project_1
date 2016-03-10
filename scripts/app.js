@@ -115,6 +115,7 @@ var emptyBoard = function(){
 		$('.accessories').empty();
 		$('header').empty();
 		$('.clientTitle').empty();
+		$('.submit').remove();
 }
 
 //--------------SET NEW ROUND FOR DRAG AND DROP -------------------------------
@@ -140,27 +141,30 @@ var setNewRound = function(){
 var dropSwitch = function(){
 	if (dropCount % 3 === 0){
 			round++;
-			if (round === clients.length){
-				emptyBoard();
-				$('.endingInfo').toggle();
-				$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
-				if(currentScore <= 60){
-					$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
-				}else if( currentScore > 60 && currentScore < 150){
-					$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
-				}else if(currentScore >= 150){
-					$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
-				};
-				$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
-				console.log('ENDING')
+			$('.submitSection').append("<button class='submit'>Like this look?></button>");
+			$('.submitSection').on('click', '.submit', function(e) {
+				if (round === clients.length){
+					emptyBoard();
+					$('.endingInfo').toggle();
+					$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
+					if(currentScore <= 60){
+						$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
+					}else if( currentScore > 60 && currentScore < 150){
+						$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
+					}else if(currentScore >= 150){
+						$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
+					};
+					$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
+					console.log('ENDING')
 
-			}else {
-			emptyBoard();
-			setNewRound();
-			// console.log('THIS SHOULD SWITCH')
+				}else {
+				emptyBoard();
+				setNewRound();
+				// console.log('THIS SHOULD SWITCH')
 			};
+		});
 	};
-}
+};
 
 
 //--------------DRAG AND DROP START------------------------------
@@ -207,28 +211,6 @@ document.addEventListener('drop', function(e) {
 		$('.wordsTop').html('')
 		dropCount++;
 		dropSwitch();
-		// if (dropCount % 3 === 0){
-		// 		round++;
-		// 		if (round === clients.length){
-		// 			emptyBoard();
-		// 			$('.endingInfo').toggle();
-		// 			$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
-		// 			if(currentScore <= 60){
-		// 				$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
-		// 			}else if( currentScore > 60 && currentScore < 150){
-		// 				$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
-		// 			}else if(currentScore >= 150){
-		// 				$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
-		// 			};
-		// 			$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
-		// 			console.log('ENDING')
-		//
-		// 		}else {
-		// 		emptyBoard();
-		// 		setNewRound();
-		// 		// console.log('THIS SHOULD SWITCH')
-		// 		};
-  	// };
 	};
 	if(e.target.className === "dropzoneBottom") {
     e.target.style.background = "";
@@ -239,28 +221,6 @@ document.addEventListener('drop', function(e) {
 		$('.wordsBottom').html('')
 		dropCount++;
 		dropSwitch();
-		// if (dropCount % 3 === 0){
-		// 		round++;
-		// 		if (round === clients.length){
-		// 			emptyBoard();
-		// 			$('.endingInfo').toggle();
-		// 			$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
-		// 			if(currentScore <= 60){
-		// 				$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
-		// 			}else if( currentScore > 60 && currentScore < 150){
-		// 				$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
-		// 			}else if(currentScore >= 150){
-		// 				$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
-		// 			};
-		// 			$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
-		// 			console.log('ENDING')
-		//
-		// 		}else {
-		// 		emptyBoard();
-		// 		setNewRound();
-		// 		// console.log('THIS SHOULD SWITCH')
-		// 		};
-  	// };
 	};
 	if(e.target.className === "dropzoneAccessory") {
     e.target.style.background = "";
@@ -271,28 +231,6 @@ document.addEventListener('drop', function(e) {
 		$('.wordsAccessory').html('')
 		dropCount++;
 		dropSwitch();
-		// if (dropCount % 3 === 0){
-		// 		round++;
-		// 		if (round === clients.length){
-		// 			emptyBoard();
-		// 			$('.endingInfo').toggle();
-		// 			$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
-		// 			if(currentScore <= 60){
-		// 				$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
-		// 			}else if( currentScore > 60 && currentScore < 150){
-		// 				$('.endingInfo .score').append('<div>Not too shabby! A few more tweeks and you are ready to style Hollywood Royalty!')
-		// 			}else if(currentScore >= 150){
-		// 				$('.endingInfo .score').append('<div>Rachel Zoe, is that you??? You are a true fashionista!!!</div>')
-		// 			};
-		// 			$('.endingInfo .score').append('<div>Check out all these looks at <a href="http://www.topshop.com">Top Shop</a>and <a href="http://www.zara.com">Zara</a> today!</div>')
-		// 			console.log('ENDING')
-		//
-		// 		}else {
-		// 		emptyBoard();
-		// 		setNewRound();
-		// 		// console.log('THIS SHOULD SWITCH')
-		// 		};
-  	// };
 	};
 }, false);
 
