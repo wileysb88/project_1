@@ -106,7 +106,6 @@ var currentScore = 0;
 var clickCount = 0;
 var round = 0;
 
-// ---------------clears board--------------------------------
 var emptyBoard = function(){
 		$('.story').empty();
 		$('.tops').empty();
@@ -116,90 +115,31 @@ var emptyBoard = function(){
 		$('.clientTitle').empty();
 }
 
-
-
-
-var dragged;
-
-document.addEventListener('drag', function(e) {
-  e.target.style.opacity = 0.5;
-}, false);
-
-document.addEventListener('dragstart', function(e) {
-  dragged = e.target;
-
-  e.target.style.opacity = 0.5;
-}, false);
-
-document.addEventListener('dragend', function(e) {
-
-  e.target.style.opacity = '';
-}, false);
-
-document.addEventListener('dragover', function(e) {
-  e.preventDefault();
-}, false);
-
-document.addEventListener('dragenter', function(e) {
-  if(e.target.className === "dropzone") {
-    e.target.style.background = "rgba(205, 52, 167, 0.42)";
-  }
-}, false);
-
-document.addEventListener('dragleave', function(e) {
-  if(e.target.className === "dropzone") {
-    e.target.style.background = "";
-  }
-}, false);
-
-document.addEventListener('drop', function(e) {
-  e.preventDefault();
-  if(e.target.className === "dropzone") {
-    e.target.style.background = "";
-    dragged.parentNode.removeChild(dragged);
-    e.target.appendChild(dragged);
-  }
-}, false);
-
-//--------------SET NEW ROUND FOR DRAG AND DROP -------------------------------
 var setNewRound = function(){
-		$('.clientTitle').append(clients[round].client);
+		$('.clientTitle').append(clients[round].client)
     $('.story').append('"'+ clients[round].story + '"');
     for (var x = 0; x<clients[round].tops.length; x++){
-        $('.tops').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
-      };
-		$('.tops').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
+        $('.tops').append("<div class='" + clients[round].top.rank + "'></div>")
+        $(clients[round].tops[x].rank).draggable({
+          containment: '.tops',
+          stack: '.tops div',
+          cursor: 'move',
+          revert: true
+        });
+		$('.tops').append("<div class='dropHere'>PLACE TOP HERE</div>");
+    $(".dropHere").draggable({})
     for (var y = 0; y<clients[round].bottoms.length; y++){
-        $('.bottoms').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
+        $('.bottoms').append("<button type='button' class='" + clients[round].bottoms[y].rank + "' draggable='true'><img src='" + clients[round].bottoms[y].img + "'></button>")
       };
-		$('.bottoms').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
+		$('.tops').append("<div class='dropHere'>PLACE BOTTOM HERE</div>");
     for (var z = 0; z<clients[round].accessories.length; z++){
-        $('.accessories').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'>")
+        $('.accessories').append("<button type='button' class='" + clients[round].accessories[z].rank + "' draggable='true'><img src='"+clients[round].accessories[z].img + "'></button>")
     	};
-		$('.accessories').append("<div class='dropzone'>PLACE ACCESSORY HERE</div>");
+		$('.tops').append("<div class='dropHere'>PLACE ACCESSORY HERE</div>");
 	};
 
-
-//--------------SET NEW ROUND FOR BUTTON CLICKS WITH SOME APPENDING WEIRDNESS----------
-// var setNewRound = function(){
-// 		$('.clientTitle').append(clients[round].client);
-//     $('.story').append('"'+ clients[round].story + '"');
-//     for (var x = 0; x<clients[round].tops.length; x++){
-//         $('.tops').append("<button type='button' class='" + clients[round].tops[x].rank + "' draggable='true' ondragstart='event.dataTransfer.setData('image/png', null)'><img src='" + clients[round].tops[x].img + "'></button>")
-//       };
-// 		$('.tops').append("<div class='dropzone'>PLACE TOP HERE</div>");
-//     for (var y = 0; y<clients[round].bottoms.length; y++){
-//         $('.bottoms').append("<button type='button' class='" + clients[round].bottoms[y].rank + "'><img src='" + clients[round].bottoms[y].img + "'></button>")
-//       };
-// 		$('.tops').append("<div class='dropHere'>PLACE BOTTOM HERE</div>");
-//     for (var z = 0; z<clients[round].accessories.length; z++){
-//         $('.accessories').append("<button type='button' class='" + clients[round].accessories[z].rank + "'><img src='"+clients[round].accessories[z].img + "'></button>").draggable()
-//     	};
-// 		$('.tops').append("<div class='dropHere'>PLACE ACCESSORY HERE</div>");
-// 	};
-
-//-------------NAVIGATING THROUGH PAGES THROUGH CLICKING-----------------------------
-
+// SINCE THIS IS SO REPETITIVE, NEED TO MAKE THIS A FUNCTION
+// BUT NEED TO FIX THE THIS IDEA
 
 var clickFunction = function(){
 		if (clickCount % 3 === 0){
@@ -255,12 +195,9 @@ $(document).ready(function(evt){
 	$('.endingInfo').toggle();
 	$('.start').click(function(e){
     e.preventDefault();
-
-		// -----OPTION TO EMPTY BEFORE TOGGLE IDEA----
     // $('header').empty();
     // $('.start').remove();
     // $('div').empty();
-
 		$('.initialInfo').toggle();
     setNewRound();
     console.log('hey')
@@ -268,25 +205,22 @@ $(document).ready(function(evt){
 
 // ------------NAVIGATING THROUGH CLIENTS--------------------------------
 
-// ---------------BUTTON CLICK SCORING------------------------------------
-//  $('.tops').on('click', 'button', function(e) {
-//   e.preventDefault();
-// 	clickCount++;
-// 	currentScore += +$(this).prop('class');
-// 	console.log(clickCount + ' ' + round + ' ' + clients.length);
-// 	clickFunction();
-// });
-//
-//  $('.bottoms').on('click', 'button', function(e) {
-//   e.preventDefault();
-// 	clickCount++;
-//   currentScore += +$(this).prop('class');
-// 	console.log(clickCount + ' ' + round + ' ' + clients.length);
-// 	clickFunction();
-// });
+ $('.tops').on('click', 'button', function(e) {
+  e.preventDefault();
+	clickCount++;
+	currentScore += +$(this).prop('class');
+	console.log(clickCount + ' ' + round + ' ' + clients.length);
+	clickFunction();
+});
 
+ $('.bottoms').on('click', 'button', function(e) {
+  e.preventDefault();
+	clickCount++;
+  currentScore += +$(this).prop('class');
+	console.log(clickCount + ' ' + round + ' ' + clients.length);
+	clickFunction();
+});
 
-// --------STILL NECESSARY OT START AND RESTART--------------------------
 $('.accessories').on('click', 'button', function(e) {
   e.preventDefault();
 	clickCount++;

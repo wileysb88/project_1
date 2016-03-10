@@ -2,39 +2,66 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>SO YOU THINK YOU CAN STYLE?</title>
+    <title>So You Think You Can Style?</title>
     <link rel="stylesheet" href="style/style.css" media="screen" title="no title" charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Dancing+Script:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Slab:400,700,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
   </head>
+
+
+
   <body>
-    <section id='welcome'>
-      <h1>SO YOU THINK YOU CAN STYLE?</h1>
-      <button type="button" id="Start">Start Styling!</button>
+
+    <section id='textSection'>
+
+      <div class="initialInfo">
+        <div class="title">So You Think You Can Style?</div>
+        <div class='rules'>Clients will come in and describes an event for which they need an outfit
+          <br> it’s your job to pick from a list of 12 items.
+          <br> Pair the best top, bottom and accessory together and see what the client thinks!
+          <br>Where will you stand after styling 10 clients?
+          <br>Will you end up looking SO last season or finish being a true fashionista?
+          <br>
+          <br>Try your luck with
+          <br>So You Think You Can Style!
+        </div>
+
+        <button type="button" class="start">Start styling!</button>
+      </div>
+
+      <div class="clientTitle"></div>
+
+      <div class="story"></div>
+
+      <div class="endingInfo">
+
+        <div class="gameOver">GAME OVER!</div>
+        <div class="score"></div>
+        <button type="button" id="playAgain">Play again?</button>
+
+
+      </div>
+
+
     </section>
-    <section id='playingField'>
 
-      <header></header>
+    <section class="buttonTiles">
 
-      <div class="tops">
-      <button type="button" class="top"><img src="https://underarmour.scene7.com/is/image/Underarmour/V5-1265926-001_LDF?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=612,650&cache=on,off&bgc=f0f0f0&resMode=sharp2"/></button>
-      <button type="button" class="top"><img src="https://underarmour.scene7.com/is/image/Underarmour/V5-1271521-904_LDF?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2 "/></button>
-      <button type="button" class="top"><img src="https://underarmour.scene7.com/is/image/Underarmour/V5-1271521-904_LDF?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2 "/></button>
-      </div>
+      <div class="tops"></div>
 
-      <div class="bottoms">
-      <button type="button" class="bottom"><img src="https://underarmour.scene7.com/is/image/Underarmour/V5-1284980-750_LDF?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2"/></button>
-      <button type="button" class="bottom"><img src="https://underarmour.scene7.com/is/image/Underarmour/V5-1284980-750_LDF?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2"/></button>
-      <button type="button" class="bottom"><img src="https://underarmour.scene7.com/is/image/Underarmour/V5-1284980-750_LDF?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2"/></button>
-      </div>
+      <div class="bottoms"></div>
 
-      <div class="accessories">
-      <button type="button" class="accessory"><img src="https://underarmour.scene7.com/is/image/Underarmour/1246734-467_DEFAULT?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2"/></button>
-      <button type="button" class="accessory"><img src="https://underarmour.scene7.com/is/image/Underarmour/1246734-467_DEFAULT?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2"/></button>
-      <button type="button" class="accessory"><img src="https://underarmour.scene7.com/is/image/Underarmour/1246734-467_DEFAULT?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2"/></button>
-      </div>
+      <div class="accessories"></div>
+
+
+
 
     </section>
 
   </body>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
-  <script type="text/javascript" src="scripts/app.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="scripts/droppablePractice.js"></script>
 </html>

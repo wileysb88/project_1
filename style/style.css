@@ -10,7 +10,7 @@ body{
   background-color: rgba(100, 101, 100, 0.7);
   border-radius: 3%;
   color: white;
-  width: 800px;
+  width: 1000px;
   margin: auto;
   padding: 20px;
 }
@@ -90,14 +90,15 @@ body{
 
 }
 
-.dropHere{
+.dropzone{
   height: 200px;
   width: 200px;
   background-color: rgba(100, 101, 100, 0.7);
-  border: 3px solid white;
+  border: 3px dashed white;
   display: inline-block;
-  margin: auto;
-  border-radius: 10%
+  margin-left: 100px;
+  border-radius: 10%;
+  text-align: center;
 
 }
 
