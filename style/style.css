@@ -1,6 +1,6 @@
 body{
   color: white;
-  background: url('/Users/wileysb/code/wileysb88.github.io/project_1/pictures/background_image.jpeg') no-repeat center center fixed;
+  background: url('/Users/wileysb/code/project_1/pictures/background_image.jpg') no-repeat center center fixed;
   background-size: cover;
   text-align: center;
 }
@@ -11,7 +11,7 @@ body{
   color: white;
   width: 1000px;
   margin: auto;
-  padding: 30px;
+  padding: 20px;
 }
 
 
@@ -47,7 +47,7 @@ body{
 
 .score{
     font-family: 'Rancho', cursive, sans-serif;
-    font-size: 40px;
+    font-size: 52px;
 }
 
 .lookLinks{
@@ -83,8 +83,8 @@ a{
 }
 
 .dropzoneTop{
-  height: 200px;
-  width: 200px;
+  height: 210px;
+  width: 210px;
   background-color: rgba(100, 101, 100, 0.7);
   border: 3px dashed white;
   border-radius: 10%;
@@ -99,8 +99,8 @@ a{
 
 
 .dropzoneBottom{
-  height: 200px;
-  width: 200px;
+  height: 210px;
+  width: 210px;
   background-color: rgba(100, 101, 100, 0.7);
   border: 3px dashed white;
   border-radius: 10%;
@@ -113,8 +113,8 @@ a{
 }
 
 .dropzoneAccessory{
-  height: 200px;
-  width: 200px;
+  height: 210px;
+  width: 210px;
   background-color: rgba(100, 101, 100, 0.7);
   border: 3px dashed white;
   border-radius: 10%;
