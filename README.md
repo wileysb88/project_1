@@ -1,5 +1,5 @@
 **SO YOU THINK YOU CAN STYLE?**
- ![MAIN HEADER IMAGE](https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSLAyW8mO5m8_W4DUptl0wz0m7Kni5V0c0MveDAUOh6uvdLH3VqJA)
+ ![MAIN HEADER IMAGE](style/pictures/background_image.jpg)
 
  *******************************************************
 
@@ -14,7 +14,7 @@
  - CSS
  - javascript
  - jQuery
- -Drop and Drag functions
+ - Drop and Drag functions
  -
  -
  -**Approach Taken:**
@@ -22,8 +22,25 @@
  -I started this out with grand ideas - I wrote them all down and decided what is the most basic version of this game that I can take. I broke it into steps if I wanted to make this program better each time:
  -[x] 1 player, clickable, clients displayed in order
  -[x] 1 player, draggable, clients displayed in order
- -[] 2 player, draggable, clients displayed in orderÂÂ
- -[] 2 player, draggable
+ -[ ] 2 player, draggable, clients displayed in order
+ -[ ] 2 player, draggable, clients displayed at random
+
+
  -**Installation Instructions**
- -
- -**Unsolved Problems*
+ - follow <a href="http://wileysb88.github.io/project_1/">THIS LINK</a> and begin to play!
+
+ - If you want to see the GitHub repo, follow <a href="https://github.com/wileysb88/project_1">THIS LINK</a>
+
+
+
+ -**Unsolved Problems**
+
+ - This project was done when I was at 66% zoomed out. I would obviously adjust all elements to be smaller accordingly.
+
+ - I cannot figure out how to allow users to drag a picture OUT of the drop zone and back into the main zone. So while it asks if you "like this look" to move on, you actually cannot change the look once it has been dropped into the appropriate places.
+
+  - I wanted to try to loop through the array of clients at random. This would require pushing the clients to a "used" array after cycling through it and emptying "clients" array.
+
+  - I had saved the pictures of each article of clothing as a picture into this project so that it wouldn't be affected if the website changed, but forgot to commit to those changes.
+
+  - I would like to make this so that if the player chooses the three best styles, a special screen pops up with the look on one full model and the score would be special bonus score.
