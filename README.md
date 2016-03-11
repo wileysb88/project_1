@@ -9,34 +9,34 @@
 
  *******************************************************
 
- **Technologies Used:**
- - HTML
- - CSS
- - javascript
- - jQuery
- - Drop and Drag functions
+**Technologies Used:**
+- HTML
+- CSS
+- javascript
+- jQuery
+- Drop and Drag functions
 
 
- **Approach Taken:**
+**Approach Taken:**
 
- I started this out with grand ideas. I wrote them all down and decided what is the most basic version of this game that I can take. I broke it into steps if I wanted to make this program better each time:
+I started this out with grand ideas. I wrote them all down and decided what is the most basic version of this game that I can take. I broke it into steps if I wanted to make this program better each time:
 
- - [x] 1 player, clickable, clients displayed in order
- - [x] 1 player, draggable, clients displayed in order
- - [ ] 2 player, draggable, clients displayed in order
- - [ ] 2 player, draggable, clients displayed at random
-
-
-
- **Installation Instructions:**
-
- Follow <a href="http://wileysb88.github.io/project_1/">THIS LINK</a> and begin to play!
-
- If you want to see the GitHub repo, follow <a href="https://github.com/wileysb88/project_1">THIS LINK</a> to check out my code!
+- [x] 1 player, clickable, clients displayed in order
+- [x] 1 player, draggable, clients displayed in order
+- [ ] 2 player, draggable, clients displayed in order
+- [ ] 2 player, draggable, clients displayed at random
 
 
 
- **Unsolved Problems:**
+**Installation Instructions:**
+
+Follow <a href="http://wileysb88.github.io/project_1/">THIS LINK</a> and begin to play!
+
+Follow <a href="https://github.com/wileysb88/project_1">THIS LINK</a> to check out my code on Github!
+
+
+
+**Unsolved Problems:**
 
 - This project was done when I was at 66% zoomed out. I would obviously adjust all elements to be smaller accordingly.
 
