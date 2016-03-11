@@ -5,6 +5,7 @@ var clients = [
     client: 'Music Festival',
     story: "Im 21 and headed to a music festival in California. I am going with 15 of my BFFs so I HAVE to look insta-ready. It will be warm out and Im super hot so I definitely want to show off some skin. Music festivals are all about a boho, free-spirited lifestyle and I have to stand out for all the right reasons. Show me what you got!",
     tops: [
+<<<<<<< HEAD
       {rank: 15, img: 'pictures/music-fest-top-15.jpg'},
       {rank: 5, img: 'pictures/music-fest-top-5.jpg'},
       {rank: 0, img: 'pictures/music-fest-top-0.jpg'}
@@ -13,6 +14,16 @@ var clients = [
       {rank: 5, img: 'pictures/music-fest-bottom-5.jpg'},
 			{rank: 15, img: 'pictures/music-fest-bottom-15.jpg'},
       {rank: 0, img: 'pictures/music-fest-bottom-0.jpg'}
+=======
+      {rank: 15, img: 'http://static.zara.net/photos//2016/V/0/1/p/4876/045/251/2/w/400/4876045251_6_1_1.jpg?timestamp=1454091182782'},
+      {rank: 0, img: 'http://static.zara.net/photos//2016/V/0/1/p/4043/055/800/2/w/400/4043055800_6_1_1.jpg?timestamp=1454685238743'},
+			{rank: 5, img: 'http://static.zara.net/photos//2016/V/0/1/p/6819/045/251/2/w/400/6819045251_6_1_1.jpg?timestamp=1456518992909'}
+    ],
+    bottoms: [
+      {rank: 5, img: 'http://media.topshop.com/wcsstore/TopShopUS/images/catalog/14E01HCRM_large.jpg '},
+      {rank: 0, img: 'http://static.zara.net/photos//2016/V/0/1/p/0387/024/802/2/w/400/0387024802_6_1_1.jpg?timestamp=1454692390455'},
+			{rank: 15, img: 'http://mediaus.topshop.com/wcsstore/TopShopUS/images/catalog/TS14E01IBLK_Zoom_F_1.jpg'}
+>>>>>>> master
     ],
     accessories: [
       {rank: 0, img: 'pictures/music-fest-accessory-0.jpg'},
@@ -24,6 +35,7 @@ var clients = [
     client: 'Rock Concert',
     story: "I’m a rocker chick and i’m going to see my favorite band at the Rivinia. It is a “sling back some beers and mosh around” kind of time but I can’t look like just another band groupie. I don’t want to look over the top either! Not to sound like a stereotype but I like leather, zippers and all things black and grey. Help me look good while rocking out!",
     tops: [
+<<<<<<< HEAD
       {rank: 5, img: 'pictures/rock-concert-top-5.jpg'},
       {rank: 0, img: 'pictures/rock-concert-top-0.jpg'},
 			{rank: 15, img: 'pictures/rock-concert-top-15.jpg'}
@@ -38,12 +50,29 @@ var clients = [
       {rank: 5, img: 'pictures/rock-concert-accessory-5.jpg'}
 			{rank: 15, img: 'pictures/rock-concert-accessory-15.jpg'}
 
+=======
+			{rank: 0, img: 'http://static.zara.net/photos//2016/V/0/1/p/1889/041/505/2/w/400/1889041505_6_1_1.jpg?timestamp=1457107298975'},
+			{rank: 15, img: 'http://static.zara.net/photos//2016/V/0/1/p/3427/008/800/2/w/400/3427008800_6_1_1.jpg?timestamp=1453743085878'},
+			{rank: 5, img: 'http://mediaus.topshop.com/wcsstore/TopShopUS/images/catalog/TS26X27IBLK_Zoom_F_1.jpg'}
+
+    ],
+    bottoms: [
+      {rank: 5, img: 'http://static.zara.net/photos//2016/V/0/1/p/6840/049/400/2/w/400/6840049400_6_1_1.jpg?timestamp=1454685684230'},
+      {rank: 0, img: 'http://static.zara.net/photos//2016/V/0/1/p/3057/260/800/2/w/400/3057260800_6_1_1.jpg?timestamp=1454521193694'},
+			{rank: 15, img: 'http://static.zara.net/photos//2016/V/0/1/p/7223/042/802/2/w/400/7223042802_6_1_1.jpg?timestamp=1452877644540'}
+    ],
+    accessories: [
+			{rank: 0, img: 'http://static.zara.net/photos//2016/V/1/1/p/1661/101/040/2/w/400/1661101040_1_1_1.jpg?timestamp=1455014086474'},
+			{rank: 5, img: 'http://static.zara.net/photos//2016/V/1/1/p/1746/101/040/2/w/560/1746101040_1_1_1.jpg?ts=1452795758371'},
+      {rank: 15, img: 'http://static.zara.net/photos//2016/V/1/1/p/1100/101/040/2/w/560/1100101040_1_1_1.jpg?ts=1457003360366'}
+>>>>>>> master
     ]
   },
   {
     client: 'Business Meeting',
     story: "I just got my first job out of college and my first day is next week! They said it’s business casual….but what does that even mean??? I want to be able to appear professional but not dress like my grandma. I need to demand respect and look damn good doing it. My new boss said “just a nice top and bottom”…hope she gives better direction on the job! Can you steer me in the right direction???",
     tops: [
+<<<<<<< HEAD
       {rank: 15, img: 'pictures/business-top-15.jpg'}
 			{rank: 0, img: 'pictures/business-top-0.jpg'}
       {rank: 5, img: 'pictures/business-top-5.jpg'},
@@ -52,6 +81,16 @@ var clients = [
       {rank: 15, img: 'pictures/business-bottom-15.jpg'}
       {rank: 5, img: 'pictures/business-bottom-5.jpg'}
       {rank: 0, img: 'pictures/business-bottom-0.jpg'}
+=======
+      {rank: 5, img: 'http://static.zara.net/photos//2016/V/0/1/p/1313/020/044/2/w/400/1313020044_6_1_1.jpg?timestamp=1454092200151'},
+      {rank: 0, img: 'http://static.zara.net/photos//2016/V/0/1/p/4786/064/660/2/w/400/4786064660_6_1_1.jpg?timestamp=1455128082962'},
+			{rank: 15, img: 'http://static.zara.net/photos//2016/V/0/1/p/2335/683/250/2/w/400/2335683250_6_1_1.jpg?timestamp=1454692518301'}
+    ],
+    bottoms: [
+      {rank: 5, img: 'http://static.zara.net/photos//2016/V/0/1/p/2052/679/401/2/w/560/2052679401_6_1_1.jpg?ts=1453922234400'},
+      {rank: 0, img: 'http://static.zara.net/photos//2016/V/0/1/p/1628/035/067/2/w/400/1628035067_6_1_1.jpg?timestamp=1457107095398'},
+			{rank: 15, img: 'http://static.zara.net/photos//2016/V/0/1/p/2234/666/679/2/w/1920/2234666679_6_1_1.jpg?timestamp=1457113615429'}
+>>>>>>> master
     ],
     accessories: [
       {rank: 15, img: 'pictures/business-accessory-15.jpg'},
@@ -64,9 +103,15 @@ var clients = [
     client: 'Pool Party',
     story: "My frenemy is having a pool party to celebrate the start of summer and I want to steal the spotlight. I want to look hot both in the pool and out. Something to throw on over an adorable bathing suit is a must. Plus you can’t forget the accessories….What can I wear to make sure all the guys are looking at me, just enough to piss off the host?",
     tops: [
+<<<<<<< HEAD
       {rank: 5, img: 'pictures/pool-top-5.jpg'},
 			{rank: 15, img: 'pictures/pool-top-15.jpg'},
       {rank: 0, img: 'pictures/pool-top-0.jpg'}
+=======
+			{rank: 0, img: 'http://media.topshop.com/wcsstore/TopShopUS/images/catalog/04W10HWHT_large.jpg'},
+			{rank: 15, img: 'http://media.topshop.com/wcsstore/TopShopUS/images/catalog/03Y01JWHT_large.jpg'},
+      {rank: 5, img: 'http://mediaus.topshop.com/wcsstore/TopShopUS/images/catalog/TS03Y03JBLK_Zoom_F_1.jpg'}
+>>>>>>> master
     ],
     bottoms: [
 			{rank: 0, img: 'pictures/pool-bottom-0.jpg'},
@@ -74,19 +119,31 @@ var clients = [
 			{rank: 5, img: 'pictures/pool-bottom-5.jpg'}
     ],
     accessories: [
+<<<<<<< HEAD
 
       {rank: 5, img: 'pictures/pool-accessory-5.jpg'},
       {rank: 0, img: 'pictures/pool-accessory-0.jpg'},
 			{rank: 15, img: 'pictures/pool-accessory-15.jpg'}
+=======
+      {rank: 15, img: 'http://media.topshop.com/wcsstore/TopShopUS/images/catalog/22S14JBLK_large.jpg'},
+      {rank: 0, img: 'http://media.topshop.com/wcsstore/TopShopUS/images/catalog/24C13JBLK_large.jpg'},
+			{rank: 5, img: 'http://mediaus.topshop.com/wcsstore/TopShopUS/images/catalog/61E18JGLD_thumb.jpg'}
+>>>>>>> master
     ]
   },
   {
     client: 'Hiking',
     story: "I’m going hiking with my college friends and want to make sure I’m not wearing another sweaty sorority t-shirt and gym shorts. I want to be able to look cute but also be able to scale any path I want to take! It’s supposed to be cool so I want to make sure I am warm but don’t make me look dumpy!!! Any ideas?",
     tops:[
+<<<<<<< HEAD
       {rank: 5, img: 'pictures/hike-top-5.jpg'},
       {rank: 0, img: 'pictures/hike-top-0.jpg'},
 			{rank: 15, img: 'pictures/hike-top-15.jpg'}
+=======
+      {rank: 5, img: 'https://underarmour.scene7.com/is/image/Underarmour/V5-1271521-904_LDF?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2'},
+      {rank: 0, img: 'https://underarmour.scene7.com/is/image/Underarmour/V5-1284980-750_LDF?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2'},
+			{rank: 15, img: 'https://underarmour.scene7.com/is/image/Underarmour/V5-1265926-001_LDF?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=612,650&cache=on,off&bgc=f0f0f0&resMode=sharp2'}
+>>>>>>> master
     ],
     bottoms: [
       {rank: 5, img: 'pictures/hike-bottoms-5.jpg'},
@@ -94,10 +151,16 @@ var clients = [
 			{rank: 15, img: 'pictures/hike-bottoms-15.jpg'}
     ],
     accessories: [
+<<<<<<< HEAD
 			{rank: 0, img: 'pictures/hike-accessory-0.jpg'},
 			{rank: 15, img: 'pictures/hike-accessory-15.jpg'},
       {rank: 5, img: 'pictures/hike-accessory-5.jpg'}
 
+=======
+      {rank: 0, img: 'https://underarmour.scene7.com/is/image/Underarmour/1266422-001_DEFAULT?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2'},
+      {rank: 5, img: 'https://underarmour.scene7.com/is/image/Underarmour/1257745-407_DEFAULT?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2'},
+      {rank: 15, img: 'https://underarmour.scene7.com/is/image/Underarmour/1246734-467_DEFAULT?scl=1&fmt=jpg&qlt=80&wid=612&hei=650&size=551,585&cache=on,off&bgc=f0f0f0&resMode=sharp2'}
+>>>>>>> master
     ]
   }
 ]
@@ -115,7 +178,7 @@ var dropCount = 0;
 
 
 
-// ---------------clears board--------------------------------
+// --------------CLEARS BOARD--------------------------
 var emptyBoard = function(){
 		$('.story').empty();
 		$('.tops').empty();
@@ -123,22 +186,30 @@ var emptyBoard = function(){
 		$('.accessories').empty();
 		$('header').empty();
 		$('.clientTitle').empty();
+		//----.empty() won't remove a button so use .remove()
 		$('.submit').remove();
 }
 
 //--------------SET NEW ROUND FOR DRAG AND DROP -------------------------------
+
 var setNewRound = function(){
 		$('.clientTitle').append(clients[round].client);
     $('.story').append('"'+ clients[round].story + '"');
+
+		// loops through top images and adds top drop box
     for (var x = 0; x<clients[round].tops.length; x++){
         $('.tops').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
 		$('.tops').append("<div class='dropzoneTop'><div class='wordsTop'>Place Top Here</div></div>");
-    for (var y = 0; y<clients[round].bottoms.length; y++){
+
+		// loops through bottom images and adds bottom drop box
+		for (var y = 0; y<clients[round].bottoms.length; y++){
         $('.bottoms').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
 		$('.bottoms').append("<div class='dropzoneBottom'><div class='wordsBottom'>Place Bottom Here</div></div>");
-    for (var z = 0; z<clients[round].accessories.length; z++){
+
+		// loops through accessory images and adds accessory drop box
+		for (var z = 0; z<clients[round].accessories.length; z++){
         $('.accessories').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
     	};
 		$('.accessories').append("<div class='dropzoneAccessory'><div class='wordsAccessory'>Place Accessory Here</div></div>");
@@ -150,6 +221,7 @@ var endFunction = function(){
 		emptyBoard();
 		$('.endingInfo').toggle();
 		$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
+		// --- gives rank for player based on how well they did -----
 		if(currentScore <= 60){
 			$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
 		}else if( currentScore > 60 && currentScore < 150){
@@ -170,6 +242,7 @@ var dropSwitch = function(){
 			round++;
 	};
 };
+
 
 $('.submitSection').on('click', '.submit', function(e) {
 	console.log(currentScore + '   ' + round + '   ' + clients.length)
