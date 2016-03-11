@@ -65,7 +65,7 @@ var clients = [
     tops: [
 			{rank: 0, img: 'http://media.topshop.com/wcsstore/TopShopUS/images/catalog/04W10HWHT_large.jpg'},
 			{rank: 15, img: 'http://media.topshop.com/wcsstore/TopShopUS/images/catalog/03Y01JWHT_large.jpg'},
-      {rank: 5, img: 'http://mediaus.topshop.com/wcsstore/TopShopUS/images/catalog/44X05IBLK_2_thumb.jpg'}
+      {rank: 5, img: 'http://mediaus.topshop.com/wcsstore/TopShopUS/images/catalog/TS03Y03JBLK_Zoom_F_1.jpg'}
     ],
     bottoms: [
       {rank: 15, img: 'http://mediaus.topshop.com/wcsstore/TopShopUS/images/catalog/BUNDLE_03T05JRED03B03JRED_thumb.jpg'},
@@ -112,7 +112,7 @@ var dropCount = 0;
 
 
 
-// ---------------clears board--------------------------------
+// --------------CLEARS BOARD--------------------------
 var emptyBoard = function(){
 		$('.story').empty();
 		$('.tops').empty();
@@ -120,22 +120,30 @@ var emptyBoard = function(){
 		$('.accessories').empty();
 		$('header').empty();
 		$('.clientTitle').empty();
+		//----.empty() won't remove a button so use .remove()
 		$('.submit').remove();
 }
 
 //--------------SET NEW ROUND FOR DRAG AND DROP -------------------------------
+
 var setNewRound = function(){
 		$('.clientTitle').append(clients[round].client);
     $('.story').append('"'+ clients[round].story + '"');
+
+		// loops through top images and adds top drop box
     for (var x = 0; x<clients[round].tops.length; x++){
         $('.tops').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
 		$('.tops').append("<div class='dropzoneTop'><div class='wordsTop'>Place Top Here</div></div>");
-    for (var y = 0; y<clients[round].bottoms.length; y++){
+
+		// loops through bottom images and adds bottom drop box
+		for (var y = 0; y<clients[round].bottoms.length; y++){
         $('.bottoms').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
 		$('.bottoms').append("<div class='dropzoneBottom'><div class='wordsBottom'>Place Bottom Here</div></div>");
-    for (var z = 0; z<clients[round].accessories.length; z++){
+
+		// loops through accessory images and adds accessory drop box
+		for (var z = 0; z<clients[round].accessories.length; z++){
         $('.accessories').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
     	};
 		$('.accessories').append("<div class='dropzoneAccessory'><div class='wordsAccessory'>Place Accessory Here</div></div>");
@@ -147,6 +155,7 @@ var endFunction = function(){
 		emptyBoard();
 		$('.endingInfo').toggle();
 		$('.endingInfo .score').append('<div>Your score is ' + currentScore + '!')
+		// --- gives rank for player based on how well they did -----
 		if(currentScore <= 60){
 			$('.endingInfo .score').append('<div>Hmmmm maybe study up on this seasons trends and try again!</div>')
 		}else if( currentScore > 60 && currentScore < 150){
@@ -167,6 +176,7 @@ var dropSwitch = function(){
 			round++;
 	};
 };
+
 
 $('.submitSection').on('click', '.submit', function(e) {
 	console.log(currentScore + '   ' + round + '   ' + clients.length)
