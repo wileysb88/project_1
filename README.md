@@ -40,6 +40,8 @@
 
  - This project was done when I was at 66% zoomed out. I would obviously adjust all elements to be smaller accordingly.
 
+ - the background image wasn't tiled before but when I tried to tile it again it didn't work. 
+
  - I cannot figure out how to allow users to drag a picture OUT of the drop zone and back into the main zone. So while it asks if you "like this look" to move on to the next client, you actually cannot change the look once it has been dropped into the appropriate places.
 
 - I wanted to try to loop through the array of clients at random. This would require pushing the clients to a "used" array after cycling through it and emptying "clients" array.
