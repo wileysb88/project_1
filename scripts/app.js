@@ -193,23 +193,29 @@ $('.submitSection').on('click', '.submit', function(e) {
 
 var dragged;
 
+// affects opacity when dragged
 document.addEventListener('drag', function(e) {
   e.target.style.opacity = 0.5;
 }, false);
 
+// targets what is dragged and keeps opacity
 document.addEventListener('dragstart', function(e) {
   dragged = e.target;
   e.target.style.opacity = 0.5;
 }, false);
 
+// sets opacity back to normal once dropped
 document.addEventListener('dragend', function(e) {
   e.target.style.opacity = '';
 }, false);
 
+// prevents any weird stuff when it is being dragged
 document.addEventListener('dragover', function(e) {
   e.preventDefault();
 }, false);
 
+
+// changes drop box color when dragged element enters
 document.addEventListener('dragenter', function(e) {
   if(e.target.className === "dropzoneTop") {
     e.target.style.background = "rgba(205, 52, 167, 0.42)";
@@ -220,12 +226,14 @@ document.addEventListener('dragenter', function(e) {
   }
 }, false);
 
+// changes drop box color back to normal when element is dropped
 document.addEventListener('dragleave', function(e) {
   if(e.target.className === "dropzone") {
     e.target.style.background = "";
   }
 }, false);
 
+// casues these things to happen when dropped
 document.addEventListener('drop', function(e) {
   e.preventDefault();
   if(e.target.className === "dropzoneTop") {
@@ -313,8 +321,6 @@ document.addEventListener('drop', function(e) {
 //
 //
 // --TO CHECK TO CONFIRM EACH INDIVIDUAL LOOP WORKS------------
-//
-//
 //  alert('THIS CLIENTS GREAT!')
 //
 // };
