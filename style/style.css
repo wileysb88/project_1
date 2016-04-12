@@ -2,149 +2,264 @@ body{
   color: white;
   background: url('pictures/background_image.jpg') no-repeat center center fixed;
   background-size: cover;
-  text-align: center;
 }
 
 #textSection{
   background-color: rgba(100, 101, 100, 0.7);
   border-radius: 3%;
   color: white;
-  width: 1000px;
+  width: 80%;
   margin: auto;
+<<<<<<< HEAD
   padding: 20px;
+=======
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
+.submitSection{
+  text-align: center;
+  margin-top: 15px;
+>>>>>>> master
+}
+
+/*-------------------MEDIA QUERIES------------------------------------------*/
+
+/*
+@media (min-width: 400px) {};
+
+@media (min-width: 550px) {};*/
+
+/*-------------------START OF FONTS------------------------------------------*/
 
 .title{
   font-family: 'Satisfy', cursive, serif;
-  font-size: 56px;
+  font-size: 36px;
 }
 
 .rules{
   font-family: 'Rancho', cursive, sans-serif;
-  font-size: 36px;
+  font-size: 22px;
 }
 
 .clientTitle{
   font-family: 'Satisfy', cursive, serif;
-  font-size: 56px;
+  font-size: 36px;
 }
 
 .story{
     font-family: 'Rancho', cursive, sans-serif;
-    font-size: 30px;
+    font-size: 24px;
     padding: 0px;
     margin: 0px;
     line-height: 110%;
 }
 
-
 .gameOver{
   font-family: 'Satisfy', cursive, serif;
-  font-size: 72px;
+  font-size: 36px;
 
 }
 
 .score{
     font-family: 'Rancho', cursive, sans-serif;
+<<<<<<< HEAD
     font-size: 52px;
+=======
+    font-size: 32px;
+>>>>>>> master
 }
 
 .lookLinks{
   font-family: 'Rancho', cursive, sans-serif;
-  font-size: 40px;
-}
-.buttonTiles{
-  border-radius: 10%;
-  display: inline-block;
-  margin-top: 10px;
+  font-size: 32px;
 }
 
 .endingInfo{
   display: none;
 }
 
-
 a{
   font-family: 'Rancho', cursive, sans-serif;
   color: white;
 }
 
-.top{
-  margin-bottom: 5px;
+
+/*--------------------START TILES WORK----------------------------------------*/
+
+.topsIcons{
+  text-align: center;
 }
 
-.bottom{
-    margin-bottom: 5px;
+.topsDropZone{
+  text-align: center;
 }
 
-.accessories{
-    margin-bottom: 5px;
+.bottomsIcons{
+  text-align: center;
 }
+
+.bottomsDropZone{
+  text-align: center;
+}
+
+.accessoriesIcons{
+  text-align: center;
+}
+
+.accessoriesDropZone{
+  text-align: center;
+}
+
+
+
+
 
 .dropzoneTop{
-  height: 210px;
-  width: 210px;
+  height: 160px;
+  width: 160px;
   background-color: rgba(100, 101, 100, 0.7);
   border: 3px dashed white;
   border-radius: 10%;
   text-align: center;
   font-family: 'Dancing Script', sans-serif;
   font-size: 20px;
-  float: right;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin: auto;
 }
-
-
 
 .dropzoneBottom{
-  height: 210px;
-  width: 210px;
+  height: 160px;
+  width: 160px;
   background-color: rgba(100, 101, 100, 0.7);
   border: 3px dashed white;
   border-radius: 10%;
   text-align: center;
   font-family: 'Dancing Script', sans-serif;
   font-size: 20px;
-  float: right;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin: auto;
 }
+
 
 .dropzoneAccessory{
-  height: 210px;
-  width: 210px;
+  height: 160px;
+  width: 160px;
   background-color: rgba(100, 101, 100, 0.7);
   border: 3px dashed white;
   border-radius: 10%;
   text-align: center;
   font-family: 'Dancing Script', sans-serif;
   font-size: 20px;
-  float: right;
-  margin-left: 35px;
-  margin-top: 15px;
+  margin: auto;
 }
 
+
+
+
 .submit{
-  margin-top: 15px;
+  margin: auto;
 }
 
 img{
   border-radius: 10%;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   border: 5px solid rgba(100, 101, 100, 0.5);
-  margin: 15px;
 }
 
 button{
   background-color: white;
   border: 3px solid rgba(100, 101, 100, 0.5);
   font-family: 'Satisfy', cursive, serif;
-  font-size: 24px;
+  font-size: 16px;
   border-radius: 50%;
-  padding: 20px;
-  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
 
 }
+
+/*--------------- START SKELETON GRID ------------------------*/
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box; }
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+  .container {
+    width: 85%;
+    padding: 0; }
+}
+
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+  .container {
+    width: 80%; }
+  .column,
+  .columns {
+    margin-left: 4%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+
+  .one.column,
+  .one.columns                    { width: 4.66666666667%; }
+  .two.columns                    { width: 13.3333333333%; }
+  .three.columns                  { width: 22%;            }
+  .four.columns                   { width: 30.6666666667%; }
+  .five.columns                   { width: 39.3333333333%; }
+  .six.columns                    { width: 48%;            }
+  .seven.columns                  { width: 56.6666666667%; }
+  .eight.columns                  { width: 65.3333333333%; }
+  .nine.columns                   { width: 74.0%;          }
+  .ten.columns                    { width: 82.6666666667%; }
+  .eleven.columns                 { width: 91.3333333333%; }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: 30.6666666667%; }
+  .two-thirds.column              { width: 65.3333333333%; }
+
+  .one-half.column                { width: 48%; }
+
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns          { margin-left: 8.66666666667%; }
+  .offset-by-two.column,
+  .offset-by-two.columns          { margin-left: 17.3333333333%; }
+  .offset-by-three.column,
+  .offset-by-three.columns        { margin-left: 26%;            }
+  .offset-by-four.column,
+  .offset-by-four.columns         { margin-left: 34.6666666667%; }
+  .offset-by-five.column,
+  .offset-by-five.columns         { margin-left: 43.3333333333%; }
+  .offset-by-six.column,
+  .offset-by-six.columns          { margin-left: 52%;            }
+  .offset-by-seven.column,
+  .offset-by-seven.columns        { margin-left: 60.6666666667%; }
+  .offset-by-eight.column,
+  .offset-by-eight.columns        { margin-left: 69.3333333333%; }
+  .offset-by-nine.column,
+  .offset-by-nine.columns         { margin-left: 78.0%;          }
+  .offset-by-ten.column,
+  .offset-by-ten.columns          { margin-left: 86.6666666667%; }
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns     { margin-left: 52%; }
+
+}*/
