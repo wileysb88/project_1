@@ -132,19 +132,19 @@ var setNewRound = function(){
 
 		// loops through top images and adds top drop box
     for (var x = 0; x<clients[round].tops.length; x++){
-        $('.topsIcons').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
+        $('.topsIcons').append("<img id='top' src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
 		$('.topsDropZone').append("<div class='dropzoneTop'><div class='wordsTop'>Place Top Here</div></div>");
 
 		// loops through bottom images and adds bottom drop box
 		for (var y = 0; y<clients[round].bottoms.length; y++){
-        $('.bottomsIcons').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
+        $('.bottomsIcons').append("<img id='bottom' src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
 		$('.bottomsDropZone').append("<div class='dropzoneBottom'><div class='wordsBottom'>Place Bottom Here</div></div>");
 
 		// loops through accessory images and adds accessory drop box
 		for (var z = 0; z<clients[round].accessories.length; z++){
-        $('.accessoriesIcons').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
+        $('.accessoriesIcons').append("<img id='accessory' src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
     	};
 		$('.accessoriesDropZone').append("<div class='dropzoneAccessory'><div class='wordsAccessory'>Place Accessory Here</div></div>");
 	};
@@ -184,7 +184,7 @@ var dropSwitch = function(){
 			}
 			else{
 				$('.submit').remove();
-				console.log('hey hey hey');
+				console.log('You dropped something but need to finish the looks!');
 			};
 };
 
@@ -229,81 +229,101 @@ document.addEventListener('dragover', function(e) {
 
 // changes drop box color when dragged element enters
 document.addEventListener('dragenter', function(e) {
-  if(e.target.className === "dropzoneTop") {
+  if(e.target.className === "dropzoneTop" && dragged.id === "top") {
     e.target.style.background = "rgba(205, 52, 167, 0.42)";
-  }else if(e.target.className === "dropzoneBottom") {
+  }else if(e.target.className === "dropzoneBottom" && dragged.id === "bottom") {
     e.target.style.background = "rgba(205, 52, 167, 0.42)";
-  }else if(e.target.className === "dropzoneAccessory") {
+  }else if(e.target.className === "dropzoneAccessory" && dragged.id === "accessory") {
     e.target.style.background = "rgba(205, 52, 167, 0.42)";
-  }else if(e.target.className === "topsIcons") {
+  }else if(e.target.className === "topsIcons" && dragged.id === "top") {
 		e.target.style.background = "rgba(226, 213, 223, 0.42)";
-	}else if(e.target.className === "bottomsIcons") {
+	}else if(e.target.className === "bottomsIcons" && dragged.id === "bottom") {
 		e.target.style.background = "rgba(226, 213, 223, 0.42)";
-	}else if(e.target.className === "accessoriesIcons") {
+	}else if(e.target.className === "accessoriesIcons" && dragged.id === "accessory") {
 		e.target.style.background = "rgba(226, 213, 223, 0.42)";
+	}
+}, false);
+
+document.addEventListener('dragexit', function(e) {
+	if(e.target.className === "dropzoneTop" && dragged.id === "top") {
+    e.target.style.background = "";
+  }else if(e.target.className === "dropzoneBottom" && dragged.id === "bottom") {
+    e.target.style.background = "";
+  }else if(e.target.className === "dropzoneAccessory" && dragged.id === "accessory") {
+    e.target.style.background = "";
+  }else if(e.target.className === "topsIcons" && dragged.id === "top") {
+		e.target.style.background = "";
+	}else if(e.target.className === "bottomsIcons" && dragged.id === "bottom") {
+		e.target.style.background = "";
+	}else if(e.target.className === "accessoriesIcons" && dragged.id === "accessory") {
+		e.target.style.background = "";
 	}
 }, false);
 
 // changes drop box color back to normal when element is dropped
 document.addEventListener('dragleave', function(e) {
-  if(e.target.className === "dropzone") {
+	if(e.target.className === "dropzoneTop" && dragged.id === "top") {
     e.target.style.background = "";
-  }
+  }else if(e.target.className === "dropzoneBottom" && dragged.id === "bottom") {
+    e.target.style.background = "";
+  }else if(e.target.className === "dropzoneAccessory" && dragged.id === "accessory") {
+    e.target.style.background = "";
+  }else if(e.target.className === "topsIcons" && dragged.id === "top") {
+		e.target.style.background = "";
+	}else if(e.target.className === "bottomsIcons" && dragged.id === "bottom") {
+		e.target.style.background = "";
+	}else if(e.target.className === "accessoriesIcons" && dragged.id === "accessory") {
+		e.target.style.background = "";
+	}
 }, false);
 
 // casues these things to happen when dropped
 document.addEventListener('drop', function(e) {
-  e.preventDefault();
-  if(e.target.className === "dropzoneTop") {
-    e.target.style.background = "";
+	e.preventDefault();
+	if(e.target.className === "dropzoneTop" && dragged.id === "top") {
+		e.target.appendChild(dragged);
 		currentScore += +$(dragged).prop('class');
-		console.log(currentScore);
-    e.target.appendChild(dragged);
+		e.target.style.background = "";
 		$(dragged).css('margin','0');
-		$('.wordsTop').html('')
+		$('.wordsTop').html('');
 		$('.dropzoneTop').addClass('full');
 		dropSwitch();
 	};
-	if(e.target.className === "dropzoneBottom") {
-    e.target.style.background = "";
+	if(e.target.className === "dropzoneBottom" && dragged.id === "bottom") {
+		e.target.appendChild(dragged);
 		currentScore += +$(dragged).prop('class');
-		console.log(currentScore);
-    e.target.appendChild(dragged);
+		e.target.style.background = "";
 		$(dragged).css('margin','0');
 		$('.wordsBottom').html('');
 		$('.dropzoneBottom').addClass('full');
 		dropSwitch();
 	};
-	if(e.target.className === "dropzoneAccessory") {
-    e.target.style.background = "";
+	if(e.target.className === "dropzoneAccessory" && dragged.id === "accessory") {
+		e.target.appendChild(dragged);
 		currentScore += +$(dragged).prop('class');
-		console.log(currentScore);
-    e.target.appendChild(dragged);
+		e.target.style.background = "";
 		$(dragged).css('margin','0');
 		$('.wordsAccessory').html('');
 		$('.dropzoneAccessory').addClass('full');
-		dropCount++;
 		dropSwitch();
 	};
-	if(e.target.className === "topsIcons") {
-    e.target.style.background = "";
+	if(e.target.className === "topsIcons" && dragged.id === "top") {
+		e.target.appendChild(dragged);
 		currentScore -= +$(dragged).prop('class');
-		console.log(currentScore);
-    e.target.appendChild(dragged);
+		e.target.style.background = "";
 		$('.wordsTop').html('Place Top Here');
 		$('.dropzoneTop').removeClass('full');
 		dropSwitch();
 	};
-	if(e.target.className === "bottomsIcons") {
-    e.target.style.background = "";
+	if(e.target.className === "bottomsIcons" && dragged.id === "bottom") {
+		e.target.appendChild(dragged);
 		currentScore -= +$(dragged).prop('class');
-		console.log(currentScore);
-    e.target.appendChild(dragged);
+    e.target.style.background = "";
 		$('.wordsBottom').html('Place Bottom Here');
 		$('.dropzoneBottom').removeClass('full');
 		dropSwitch();
 	};
-	if(e.target.className === "accessoriesIcons") {
+	if(e.target.className === "accessoriesIcons" && dragged.id === "accessory") {
     e.target.style.background = "";
 		currentScore -= +$(dragged).prop('class');
 		console.log(currentScore);
