@@ -1,4 +1,4 @@
-//-------------CLIENTS ARRAY---------------------
+//-------------CLIENTS ARRAY--------------------------------------------
 
 var clients = [
 	{
@@ -99,32 +99,32 @@ var clients = [
   }
 ]
 
-// ---------------------------START THE CODE----------------------------
+// ------------START THE CODE-------------------------------------------
 
 
-//------GLOBAL VARIABLES--------
+//-------------GLOBAL VARIABLES-----------------------------------------
 var currentScore = 0;
 var clickCount = 0;
 var round = 0;
 var dropCount = 0;
 
+// ------------CLEARS BOARD---------------------------------------------
 
-
-
-
-// --------------CLEARS BOARD--------------------------
 var emptyBoard = function(){
 		$('.story').empty();
-		$('.tops').empty();
-		$('.bottoms').empty();
-		$('.accessories').empty();
+		$('.topsIcons').empty();
+		$('.bottomsIcons').empty();
+		$('.accessoriesIcons').empty();
+		$('.topsDropZone').empty();
+		$('.bottomsDropZone').empty();
+		$('.accessoriesDropZone').empty();
 		$('header').empty();
 		$('.clientTitle').empty();
 		//----.empty() won't remove a button so use .remove()
 		$('.submit').remove();
 }
 
-//--------------SET NEW ROUND FOR DRAG AND DROP -------------------------------
+//--------------SET NEW ROUND FOR DRAG AND DROP ------------------------
 
 var setNewRound = function(){
 		$('.clientTitle').append(clients[round].client);
@@ -132,21 +132,21 @@ var setNewRound = function(){
 
 		// loops through top images and adds top drop box
     for (var x = 0; x<clients[round].tops.length; x++){
-        $('.tops').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
+        $('.topsIcons').append("<img src='" + clients[round].tops[x].img + "'class='" + clients[round].tops[x].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
-		$('.tops').append("<div class='dropzoneTop'><div class='wordsTop'>Place Top Here</div></div>");
+		$('.topsDropZone').append("<div class='dropzoneTop'><div class='wordsTop'>Place Top Here</div></div>");
 
 		// loops through bottom images and adds bottom drop box
 		for (var y = 0; y<clients[round].bottoms.length; y++){
-        $('.bottoms').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
+        $('.bottomsIcons').append("<img src='" + clients[round].bottoms[y].img + "'class='" + clients[round].bottoms[y].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
       };
-		$('.bottoms').append("<div class='dropzoneBottom'><div class='wordsBottom'>Place Bottom Here</div></div>");
+		$('.bottomsDropZone').append("<div class='dropzoneBottom'><div class='wordsBottom'>Place Bottom Here</div></div>");
 
 		// loops through accessory images and adds accessory drop box
 		for (var z = 0; z<clients[round].accessories.length; z++){
-        $('.accessories').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
+        $('.accessoriesIcons').append("<img src='" + clients[round].accessories[z].img + "'class='" + clients[round].accessories[z].rank + "' draggable='true' ondragover='event.preventDefault()'/>")
     	};
-		$('.accessories').append("<div class='dropzoneAccessory'><div class='wordsAccessory'>Place Accessory Here</div></div>");
+		$('.accessoriesDropZone').append("<div class='dropzoneAccessory'><div class='wordsAccessory'>Place Accessory Here</div></div>");
 	};
 
 
@@ -168,18 +168,30 @@ var endFunction = function(){
 
 
 
-//----------------DROPSWITCH FUNCTION----------------
-
+//---------------DROPSWITCH FUNCTION--------------------------
 var dropSwitch = function(){
-	if (dropCount % 3 === 0){
-			$('.submitSection').append("<button class='submit'>Like this look?</button>");
-			round++;
-	};
+	// if (dropCount % 3 === 0){
+	// 		$('.submitSection').append("<button class='submit'>Like this look?</button>");
+	// 		round++;
+	// };
+	if(
+				$('.dropzoneTop').prop('class') 			=== 'dropzoneTop full'					&&
+				$('.dropzoneBottom').prop('class') 		=== 'dropzoneBottom full' 			&&
+				$('.dropzoneAccessory').prop('class') === 'dropzoneAccessory full'
+			){
+				$('.submitSection').append("<button class='submit'>Like this look?</button>");
+				console.log('THIS WORKED!')
+			}
+			else{
+				$('.submit').remove();
+				console.log('hey hey hey');
+			};
 };
 
-
 $('.submitSection').on('click', '.submit', function(e) {
+	round++;
 	console.log(currentScore + '   ' + round + '   ' + clients.length)
+	$('.submit').toggle();
 	if (round === clients.length){
 		endFunction();
 	}else{
@@ -190,7 +202,6 @@ $('.submitSection').on('click', '.submit', function(e) {
 
 
 //--------------DRAG AND DROP START------------------------------
-
 var dragged;
 
 // affects opacity when dragged
@@ -200,12 +211,14 @@ document.addEventListener('drag', function(e) {
 
 // targets what is dragged and keeps opacity
 document.addEventListener('dragstart', function(e) {
+	console.log('dragstart');
   dragged = e.target;
   e.target.style.opacity = 0.5;
 }, false);
 
 // sets opacity back to normal once dropped
 document.addEventListener('dragend', function(e) {
+	console.log('dragend');
   e.target.style.opacity = '';
 }, false);
 
@@ -213,7 +226,6 @@ document.addEventListener('dragend', function(e) {
 document.addEventListener('dragover', function(e) {
   e.preventDefault();
 }, false);
-
 
 // changes drop box color when dragged element enters
 document.addEventListener('dragenter', function(e) {
@@ -223,7 +235,13 @@ document.addEventListener('dragenter', function(e) {
     e.target.style.background = "rgba(205, 52, 167, 0.42)";
   }else if(e.target.className === "dropzoneAccessory") {
     e.target.style.background = "rgba(205, 52, 167, 0.42)";
-  }
+  }else if(e.target.className === "topsIcons") {
+		e.target.style.background = "rgba(226, 213, 223, 0.42)";
+	}else if(e.target.className === "bottomsIcons") {
+		e.target.style.background = "rgba(226, 213, 223, 0.42)";
+	}else if(e.target.className === "accessoriesIcons") {
+		e.target.style.background = "rgba(226, 213, 223, 0.42)";
+	}
 }, false);
 
 // changes drop box color back to normal when element is dropped
@@ -239,30 +257,62 @@ document.addEventListener('drop', function(e) {
   if(e.target.className === "dropzoneTop") {
     e.target.style.background = "";
 		currentScore += +$(dragged).prop('class');
+		console.log(currentScore);
     e.target.appendChild(dragged);
 		$(dragged).css('margin','0');
 		$('.wordsTop').html('')
-		dropCount++;
+		$('.dropzoneTop').addClass('full');
 		dropSwitch();
 	};
 	if(e.target.className === "dropzoneBottom") {
     e.target.style.background = "";
 		currentScore += +$(dragged).prop('class');
+		console.log(currentScore);
     e.target.appendChild(dragged);
 		$(dragged).css('margin','0');
-		$('.wordsBottom').html('')
-		dropCount++;
+		$('.wordsBottom').html('');
+		$('.dropzoneBottom').addClass('full');
 		dropSwitch();
 	};
 	if(e.target.className === "dropzoneAccessory") {
     e.target.style.background = "";
 		currentScore += +$(dragged).prop('class');
+		console.log(currentScore);
     e.target.appendChild(dragged);
 		$(dragged).css('margin','0');
-		$('.wordsAccessory').html('')
+		$('.wordsAccessory').html('');
+		$('.dropzoneAccessory').addClass('full');
 		dropCount++;
 		dropSwitch();
 	};
+	if(e.target.className === "topsIcons") {
+    e.target.style.background = "";
+		currentScore -= +$(dragged).prop('class');
+		console.log(currentScore);
+    e.target.appendChild(dragged);
+		$('.wordsTop').html('Place Top Here');
+		$('.dropzoneTop').removeClass('full');
+		dropSwitch();
+	};
+	if(e.target.className === "bottomsIcons") {
+    e.target.style.background = "";
+		currentScore -= +$(dragged).prop('class');
+		console.log(currentScore);
+    e.target.appendChild(dragged);
+		$('.wordsBottom').html('Place Bottom Here');
+		$('.dropzoneBottom').removeClass('full');
+		dropSwitch();
+	};
+	if(e.target.className === "accessoriesIcons") {
+    e.target.style.background = "";
+		currentScore -= +$(dragged).prop('class');
+		console.log(currentScore);
+    e.target.appendChild(dragged);
+		$('.wordsAccessory').html('Place Accessory Here');
+		$('.dropzoneAccessory').removeClass('full')
+		dropSwitch();
+	};
+
 }, false);
 
 
@@ -286,7 +336,6 @@ document.addEventListener('drop', function(e) {
 // 	};
 
 //-------------NAVIGATING THROUGH PAGES THROUGH CLICKING-----------------------------
-
 	// var clickFunction = function(){
 	// 		if (clickCount % 3 === 0){
 	// 				round++;
@@ -304,42 +353,19 @@ document.addEventListener('drop', function(e) {
 	// 		};
 	// };
 
-//----------FOR LOOP TO LOOP THROUGH ARRAY IF NEEDED IN FUTURE-------------------------------
-//
-// for (var i = 0; i<clients.length; i++){
-//   $('header').append(clients[i].story);
-//   var thisClient = clients[i];
-//   for (var x = 0; x<clients[i].tops.length; x++){
-//     $('.tops').append("<button type='button' class='"+thisClient.tops[x].rank+"'><img src='"+thisClient.tops[x].img+"'></button>")
-//   };
-//   for (var y = 0; y<clients[i].bottoms.length; y++){
-//     $('.bottoms').append("<button type='button' class='"+thisClient.bottoms[y].rank+"'><img src='"+thisClient.bottoms[y].img+"'></button>")
-//   };
-//   for (var z = 0; z<clients[i].accessories.length; z++){
-//     $('.accessories').append("<button type='button' class='"+thisClient.accessories[z].rank+"'><img src='"+thisClient.accessories[z].img+"'></button>")
-//   };
-//
-//
-// --TO CHECK TO CONFIRM EACH INDIVIDUAL LOOP WORKS------------
-//  alert('THIS CLIENTS GREAT!')
-//
-// };
+
 
 // ------------SET UP PAGE--------------------------------
 $(document).ready(function(evt){
 	$('.start').click(function(e){
     e.preventDefault();
 
-		// -----OPTION TO EMPTY BEFORE TOGGLE IDEA----
-    // $('header').empty();
-    // $('.start').remove();
-    // $('div').empty();
 
-		//-------TOGGLE INITIAL INFO-----------------
+//-------TOGGLE INITIAL INFO-----------------
 
-		$('.initialInfo').toggle();
-    setNewRound();
-    console.log('hey')
+	$('.initialInfo').toggle();
+  setNewRound();
+  console.log('hey')
   });
 
 // ------------NAVIGATING THROUGH CLIENTS--------------------------------
@@ -373,24 +399,17 @@ $(document).ready(function(evt){
 
 
 // ---------------PLAY AGAIN BUTTON---------------------------------------
-$('.endingInfo').on('click', '#playAgain', function(e) {
-	e.preventDefault();
-	console.log('WORK');
-	$('.endingInfo').toggle();
-	$('.endingInfo .score').empty();
-	$('.initialInfo').toggle();
-	round = 0;
-	clickCount = 0;
-	currentScore = 0;
-
-	// --------USED BEFORE TOGGLE-------------------
-	// $('header').empty();
-	// $('.story').empty();
-	// $('header').html('So You Think You Can Style?');
-	// $('div').append("<div class='rules'>Clients will come in and describes an event for which they need an outfit<br> it’s your job to pick from a list of 12 items (3 tops, 3 bottoms, 3 accessories).	<br> Pair the best top, bottom and accessory together and see what the client thinks!	<br>Where will you stand after styling 10 clients?	<br>Will you end up looking SO last season or finish being a true fashionista?<br>	<br>Try your luck with<br>So You Think You Can Style?</div>");
-	// $('#playingField').append('<button type="button" class="start">Start styling!</button>');
-});
-
+	$('.endingInfo').on('click', '#playAgain', function(e) {
+		e.preventDefault();
+		console.log('WORK');
+		$('.endingInfo').toggle();
+		$('.endingInfo .score').empty();
+		$('.initialInfo').toggle();
+		round = 0;
+		clickCount = 0;
+		currentScore = 0;
+		dropCount = 0;
+	});
 
 
 });

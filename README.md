@@ -30,13 +30,13 @@ I started this out with grand ideas. I wrote them all down and decided what is t
 
 **Installation Instructions:**
 
-Follow <a href="http://wileysb88.github.io/project_1/">THIS LINK</a> and begin to play!
+Follow <a href="http://chomp-chicago.herokuapp.com/">THIS LINK</a> and begin to play!
 
 Follow <a href="https://github.com/wileysb88/project_1">THIS LINK</a> to check out my code on Github!
 
 
 
-**Unsolved Problems:**
+**Unsolved Problems**
 
 - This project was done when I was at 66% zoomed out. I would obviously adjust all elements to be smaller accordingly.
 
