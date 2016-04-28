@@ -179,7 +179,7 @@ var dropSwitch = function(){
 				$('.dropzoneBottom').prop('class') 		=== 'dropzoneBottom full' 			&&
 				$('.dropzoneAccessory').prop('class') === 'dropzoneAccessory full'
 			){
-				$('.submitSection').append("<button class='submit'>Like this look?</button>");
+				$('#textSection').append("<button class='submit'>Like this look?</button>");
 				console.log('THIS WORKED!')
 			}
 			else{
@@ -188,7 +188,7 @@ var dropSwitch = function(){
 			};
 };
 
-$('.submitSection').on('click', '.submit', function(e) {
+$('#textSection').on('click', '.submit', function(e) {
 	round++;
 	console.log(currentScore + '   ' + round + '   ' + clients.length)
 	$('.submit').toggle();
